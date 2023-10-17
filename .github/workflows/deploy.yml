@@ -42,7 +42,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: backend-build
-          path: backend/target/framefiesta.jar
+          path: backend/target/groupset-hero.jar
 
   push-to-docker-hub:
     runs-on: ubuntu-latest
