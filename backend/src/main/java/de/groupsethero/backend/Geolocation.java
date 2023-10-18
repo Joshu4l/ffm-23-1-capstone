@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 public class Geolocation {
 
     //ATTRIBUTES
-    private String id;
     private double latitude;
     private double longitude;
     private double elevation;

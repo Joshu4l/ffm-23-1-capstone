@@ -1,8 +1,7 @@
 package de.groupsethero.backend;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,8 +16,17 @@ public class GeolocationController {
         this.geolocationService = geolocationService;
     }
 
-    @GetMapping()
+    @GetMapping("/geolocations")
+    @ResponseStatus(HttpStatus.OK)
     public List<Geolocation> getAllGeolocations() {
         return geolocationService.findAllGeolocations();
     }
+
+    @PostMapping("/geolocations")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Geolocation createGeolocation(@RequestBody Geolocation geolocation) {
+        return geolocationService.createGeolocation(geolocation);
+    }
+
+
 }
