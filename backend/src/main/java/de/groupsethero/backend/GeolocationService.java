@@ -24,7 +24,6 @@ public class GeolocationService {
         return geolocationRepo.save(geolocation);
     }
 
-
     public void createGeolocationsFromJsonFile() {
         try {
             Path path = Paths.get("/Users/joshuaalbert/Desktop/testDbInput.json");
