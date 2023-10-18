@@ -28,5 +28,11 @@ public class GeolocationController {
         return geolocationService.createGeolocation(geolocation);
     }
 
+    @GetMapping("/populate")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void populate () {
+        geolocationService.createGeolocationsFromJsonFile();
+    }
+
 
 }
