@@ -1,15 +1,18 @@
-package models;
+package de.groupsethero.backend;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Geolocation {
 
     //ATTRIBUTES
+    private String id;
     private double latitude;
     private double longitude;
-    private long elevation;
+    private double elevation;
 
     //CUSTOM METHODS
     public String convertToDegreeMinuteSecondFormat() {
