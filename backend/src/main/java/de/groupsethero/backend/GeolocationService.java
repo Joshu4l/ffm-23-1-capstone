@@ -2,12 +2,10 @@ package de.groupsethero.backend;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -32,10 +30,8 @@ public class GeolocationService {
             ObjectMapper objectMapper = new ObjectMapper();
             Geolocation[] geolocationsArray = objectMapper.readValue(new File(jsonFilePath), Geolocation[].class);
 
-            List<Geolocation> geolocations = Arrays.asList(geolocationsArray);
-
             // Save each geolocation to the database
-            for (Geolocation geolocation : geolocations) {
+            for (Geolocation geolocation : geolocationsArray) {
                 createGeolocation(geolocation);
             }
         } catch (IOException e) {
