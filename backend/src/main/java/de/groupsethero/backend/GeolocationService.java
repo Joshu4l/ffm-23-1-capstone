@@ -38,8 +38,6 @@ public class GeolocationService {
             for (Geolocation geolocation : geolocations) {
                 createGeolocation(geolocation);
             }
-
-            System.out.println("Geolocations created successfully.");
         } catch (IOException e) {
             e.printStackTrace();
             // Handle exception appropriately
