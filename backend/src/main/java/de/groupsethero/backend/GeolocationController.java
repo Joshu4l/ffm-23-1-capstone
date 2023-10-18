@@ -1,8 +1,6 @@
 package de.groupsethero.backend;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 
@@ -16,6 +14,7 @@ public class GeolocationController {
         this.geolocationService = geolocationService;
     }
 
+
     @GetMapping("/geolocations")
     @ResponseStatus(HttpStatus.OK)
     public List<Geolocation> getAllGeolocations() {
@@ -27,12 +26,5 @@ public class GeolocationController {
     public Geolocation createGeolocation(@RequestBody Geolocation geolocation) {
         return geolocationService.createGeolocation(geolocation);
     }
-
-    @GetMapping("/populate")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void populate () {
-        geolocationService.createGeolocationsFromJsonFile();
-    }
-
 
 }
