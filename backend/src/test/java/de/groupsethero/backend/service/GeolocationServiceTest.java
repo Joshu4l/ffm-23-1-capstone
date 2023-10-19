@@ -1,5 +1,4 @@
 package de.groupsethero.backend.service;
-import de.groupsethero.backend.GeolocationException;
 import de.groupsethero.backend.models.Geolocation;
 import de.groupsethero.backend.repository.GeolocationRepo;
 import java.util.List;
