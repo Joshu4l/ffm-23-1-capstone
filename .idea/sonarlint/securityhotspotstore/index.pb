@@ -19,3 +19,5 @@ u
 Ebackend/src/main/java/de/groupsethero/backend/GeolocationService.java,5/0/506ada0ed540f42329773b039e9b1deac145df80
 ?
 backend/pom.xml,f/9/f9590cd73598b6f2427c8b1327d922c50d1dc504
+\
+,.idea/inspectionProfiles/Project_Default.xml,4/9/496a238a6afa168dbaf6efd37bb459331589579c

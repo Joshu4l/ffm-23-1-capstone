@@ -19,3 +19,5 @@ s
 Cbackend/src/main/java/de/groupsethero/backend/InputGeolocation.java,b/5/b5e17207304c322e2306984e2651330b3a99e767
 ?
 backend/pom.xml,f/9/f9590cd73598b6f2427c8b1327d922c50d1dc504
+\
+,.idea/inspectionProfiles/Project_Default.xml,4/9/496a238a6afa168dbaf6efd37bb459331589579c
