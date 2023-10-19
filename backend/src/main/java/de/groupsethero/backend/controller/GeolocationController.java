@@ -1,4 +1,7 @@
-package de.groupsethero.backend;
+package de.groupsethero.backend.controller;
+import de.groupsethero.backend.models.Geolocation;
+import de.groupsethero.backend.GeolocationException;
+import de.groupsethero.backend.service.GeolocationService;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
