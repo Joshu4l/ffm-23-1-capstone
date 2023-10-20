@@ -3,6 +3,9 @@ import de.groupsethero.backend.GeolocationException;
 import de.groupsethero.backend.models.Geolocation;
 import de.groupsethero.backend.repository.GeolocationRepo;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
+
 import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,8 +18,9 @@ class GeolocationServiceTest {
     GeolocationService geolocationService = new GeolocationService(geolocationRepo);
 
 
+    // ALL
     @Test
-    void getAllGeolocationsGivenEmptyDB_expectEmptyList() throws Exception {
+    void getAllGeolocationsGivenEmptyDB_expectEmptyList() throws GeolocationException {
 
         //GIVEN
         List<Geolocation> geolocationList = List.of();
@@ -32,7 +36,7 @@ class GeolocationServiceTest {
     }
 
     @Test
-    void getAllGeolocationsGivenSingleEntry_expectListOfOneElement() throws Exception {
+    void getAllGeolocationsGivenSingleEntry_expectListOfOneElement() throws GeolocationException {
 
         //GIVEN
         Geolocation singleEntry = new Geolocation(47.3, 5.9, 238.71);
@@ -49,7 +53,7 @@ class GeolocationServiceTest {
     }
 
     @Test
-    void getAllGeolocationsGivenMultipleEntries_expectListOfMultipleElements() throws Exception {
+    void getAllGeolocationsGivenMultipleEntries_expectListOfMultipleElements() throws GeolocationException {
 
         //GIVEN
         Geolocation entry1 = new Geolocation(47.3, 5.9, 238.71);
@@ -72,7 +76,7 @@ class GeolocationServiceTest {
     }
 
     @Test
-    void getAllGeolocations_expectExceptionCase() throws Exception {
+    void getAllGeolocations_expectExceptionCase() throws GeolocationException {
 
         /* Setting up DB-entries not applicable in this scenario */
 
@@ -94,39 +98,48 @@ class GeolocationServiceTest {
 
 
 
-/*    @Test
-    void getAllMovies_expectOneMovie() {
+    // BY ID
+    @Test
+    void getGeolocationByIdGivenValidId_expectOneElement() throws NoSuchElementException {
+        // GIVEN
+        String validId = "653063420c470e5631cc4dba";
 
-        //GIVEN
-        Movie m1 = new Movie("adalij039q", "LOTR - die Gefährten", "Peter Jackson");
-        List<Movie> movieList = List.of(m1);
+        Geolocation singleEntry = new Geolocation(47.3, 5.9, 238.71);
+        when(geolocationRepo.findById(validId))
+                .thenReturn(Optional.of(singleEntry));
 
-        //WHEN
-        when(movieRepo.findAll()).thenReturn(movieList);
-        List<Movie> actual = movieService.getAllMovies();
+        // WHEN
+        Geolocation actual = geolocationService.getGeolocationById(validId);
 
-        //THEN
-        List<Movie> expected = List.of(new Movie("adalij039q", "LOTR - die Gefährten", "Peter Jackson"));
-
-        verify(movieRepo).findAll();
+        // THEN
+        Geolocation expected = new Geolocation(47.3, 5.9, 238.71);
+        verify(geolocationRepo).findById(validId);
         assertEquals(expected, actual);
-    }*/
+    }
+
+    @Test
+    void getGeolocationByIdGivenInvalidId_expectException() throws NoSuchElementException {
+
+        // GIVEN
+        String invalidId = "nonsenseId";
+        when(geolocationRepo.findById(invalidId))
+                .thenThrow(new NoSuchElementException("Nothing here - The geolocation specified doesn't seem to exist"));
+
+        try {
+            // WHEN
+            geolocationService.getGeolocationById(invalidId);
+            fail("Adjust this test! Exception has not been triggered");
+
+        } catch (NoSuchElementException e) {
+            // THEN
+            verify(geolocationRepo).findById(invalidId);
+            assertEquals("Nothing here - The geolocation specified doesn't seem to exist", e.getMessage());
+        }
+    }
 
 
-/*    @Test
-    void getGeolocationById_expect() {
 
-        //GIVEN
-
-
-        //WHEN
-
-
-        //THEN
-
-    }*/
-
-
+    // CREATE
 /*    @Test
     void createGeolocation_expect() {
         //GIVEN
