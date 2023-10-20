@@ -35,6 +35,6 @@ public class Geolocation {
                 lonDegrees, lonMinutes, lonSeconds, inputLongitudeCardinalDirection);
     }
 
-    // GETTERS, SETTERS AND OVERRIDES AUTOMATICALLY CREATED BY LOMBOK's @Data ANNOTATION
+    // GETTERS, SETTERS AND OVERRIDE METHODS AUTOMATICALLY CREATED BY LOMBOK'S @Data ANNOTATION
 
 }

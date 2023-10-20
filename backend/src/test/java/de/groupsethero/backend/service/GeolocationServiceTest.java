@@ -1,4 +1,5 @@
 package de.groupsethero.backend.service;
+import de.groupsethero.backend.GeolocationException;
 import de.groupsethero.backend.models.Geolocation;
 import de.groupsethero.backend.repository.GeolocationRepo;
 import java.util.List;
@@ -15,7 +16,7 @@ class GeolocationServiceTest {
 
 
     @Test
-    void getAllGeolocationsGivenNoEntries_expectEmptyList() throws Exception{
+    void getAllGeolocationsGivenEmptyDB_expectEmptyList() throws Exception {
 
         //GIVEN
         List<Geolocation> geolocationList = List.of();
@@ -28,6 +29,67 @@ class GeolocationServiceTest {
         List<Geolocation> expected = List.of();
         verify(geolocationRepo).findAll();
         assertEquals(expected, actual);
+    }
+
+    @Test
+    void getAllGeolocationsGivenSingleEntry_expectListOfOneElement() throws Exception {
+
+        //GIVEN
+        Geolocation singleEntry = new Geolocation(47.3, 5.9, 238.71);
+        List<Geolocation> geolocationList = List.of(singleEntry);
+        when(geolocationRepo.findAll()).thenReturn(geolocationList);
+
+        //WHEN
+        List<Geolocation> actual = geolocationService.getAllGeolocations();
+
+        //THEN
+        List<Geolocation> expected = List.of(new Geolocation(47.3, 5.9, 238.71));
+        verify(geolocationRepo).findAll();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void getAllGeolocationsGivenMultipleEntries_expectListOfMultipleElements() throws Exception {
+
+        //GIVEN
+        Geolocation entry1 = new Geolocation(47.3, 5.9, 238.71);
+        Geolocation entry2 = new Geolocation(47.3, 5.91, 240.03);
+        Geolocation entry3 = new Geolocation(47.3, 5.92, 239.68);
+        List<Geolocation> geolocationList = List.of(entry1, entry2, entry3);
+        when(geolocationRepo.findAll()).thenReturn(geolocationList);
+
+        //WHEN
+        List<Geolocation> actual = geolocationService.getAllGeolocations();
+
+        //THEN
+        List<Geolocation> expected = List.of(
+                new Geolocation(47.3, 5.9, 238.71),
+                new Geolocation(47.3, 5.91, 240.03),
+                new Geolocation(47.3, 5.92, 239.68)
+                );
+        verify(geolocationRepo).findAll();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void getAllGeolocations_expectExceptionCase() throws Exception {
+
+        /* Setting up DB-entries not applicable in this scenario */
+
+        // GIVEN
+        doThrow(new GeolocationException("GeolocationException: .findAll() -operation could not be performed successfully."))
+                .when(geolocationRepo).findAll();
+
+        try {
+            //WHEN
+            geolocationService.getAllGeolocations();
+            fail("Adjust this test! Exception has not been triggered");
+
+        } catch (GeolocationException e) {
+            //THEN
+            verify(geolocationRepo).findAll();
+            assertEquals("GeolocationException: .findAll() -operation could not be performed successfully.", e.getMessage());
+        }
     }
 
 
