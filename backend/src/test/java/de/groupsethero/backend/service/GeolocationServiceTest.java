@@ -1,12 +1,12 @@
 package de.groupsethero.backend.service;
-import de.groupsethero.backend.GeolocationException;
+import de.groupsethero.backend.exceptions.GeolocationInsertException;
+import de.groupsethero.backend.exceptions.GeolocationRetrievalException;
 import de.groupsethero.backend.models.Geolocation;
 import de.groupsethero.backend.repository.GeolocationRepo;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
-
 import org.junit.jupiter.api.Test;
+import java.util.NoSuchElementException;
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,9 +18,10 @@ class GeolocationServiceTest {
     GeolocationService geolocationService = new GeolocationService(geolocationRepo);
 
 
-    // ALL
+
+    // GET ALL
     @Test
-    void getAllGeolocationsGivenEmptyDB_expectEmptyList() throws GeolocationException {
+    void getAllGeolocationsGivenEmptyDB_expectEmptyList() throws GeolocationRetrievalException {
 
         //GIVEN
         List<Geolocation> geolocationList = List.of();
@@ -36,7 +37,7 @@ class GeolocationServiceTest {
     }
 
     @Test
-    void getAllGeolocationsGivenSingleEntry_expectListOfOneElement() throws GeolocationException {
+    void getAllGeolocationsGivenSingleEntry_expectListOfOneElement() throws GeolocationRetrievalException {
 
         //GIVEN
         Geolocation singleEntry = new Geolocation(47.3, 5.9, 238.71);
@@ -53,7 +54,7 @@ class GeolocationServiceTest {
     }
 
     @Test
-    void getAllGeolocationsGivenMultipleEntries_expectListOfMultipleElements() throws GeolocationException {
+    void getAllGeolocationsGivenMultipleEntries_expectListOfMultipleElements() throws GeolocationRetrievalException {
 
         //GIVEN
         Geolocation entry1 = new Geolocation(47.3, 5.9, 238.71);
@@ -76,12 +77,12 @@ class GeolocationServiceTest {
     }
 
     @Test
-    void getAllGeolocations_expectExceptionCase() throws GeolocationException {
+    void getAllGeolocations_expectGeolocationRetrievalException() throws GeolocationRetrievalException {
 
         /* Setting up DB-entries not applicable in this scenario */
 
         // GIVEN
-        doThrow(new GeolocationException("GeolocationException: .findAll() -operation could not be performed successfully."))
+        doThrow(new GeolocationRetrievalException("GeolocationException: .findAll() -operation could not be performed successfully."))
                 .when(geolocationRepo).findAll();
 
         try {
@@ -89,7 +90,7 @@ class GeolocationServiceTest {
             geolocationService.getAllGeolocations();
             fail("Adjust this test! Exception has not been triggered");
 
-        } catch (GeolocationException e) {
+        } catch (GeolocationRetrievalException e) {
             //THEN
             verify(geolocationRepo).findAll();
             assertEquals("GeolocationException: .findAll() -operation could not be performed successfully.", e.getMessage());
@@ -98,7 +99,7 @@ class GeolocationServiceTest {
 
 
 
-    // BY ID
+    // GET BY ID
     @Test
     void getGeolocationByIdGivenValidId_expectOneElement() throws NoSuchElementException {
         // GIVEN
@@ -118,7 +119,7 @@ class GeolocationServiceTest {
     }
 
     @Test
-    void getGeolocationByIdGivenInvalidId_expectException() throws NoSuchElementException {
+    void getGeolocationByIdGivenInvalidId_expectNoSuchElementException() throws NoSuchElementException {
 
         // GIVEN
         String invalidId = "nonsenseId";
@@ -140,15 +141,47 @@ class GeolocationServiceTest {
 
 
     // CREATE
-/*    @Test
-    void createGeolocation_expect() {
-        //GIVEN
+    @Test
+    void createGeolocationGivenSingleObject_expectValidReturnObject() throws GeolocationInsertException {
 
+        //GIVEN
+        double inputLatitude = 47.3;
+        double inputLongitude = 5.9;
+        double inputElevation = 238.71;
+        Geolocation resultingGeolocation = new Geolocation(47.3, 5.9, 238.71);
+
+        when(geolocationRepo.save(new Geolocation(inputLatitude, inputLongitude, inputElevation)))
+                .thenReturn(resultingGeolocation);
 
         //WHEN
-
+        Geolocation actual = geolocationService.createGeolocation(new Geolocation(inputLatitude, inputLongitude, inputElevation));
 
         //THEN
+        Geolocation expected = new Geolocation(inputLatitude, inputLongitude, inputElevation);
+        verify(geolocationRepo).save(new Geolocation(inputLatitude, inputLongitude, inputElevation));
+        assertEquals(expected, actual);
 
-    }*/
+    }
+
+    @Test
+    void createGeolocationGivenUnsuccessfulInsertOperation_expectGeolocationInsertException() throws GeolocationInsertException {
+        // GIVEN
+        double inputLatitude = 47.3;
+        double inputLongitude = 5.9;
+        double inputElevation = 238.71;
+        when(geolocationRepo.save(new Geolocation(inputLatitude, inputLongitude, inputElevation)))
+                .thenThrow(new GeolocationInsertException("We're sorry - The object cannot not be created appropriately at this time."));
+
+        try {
+            // WHEN
+            geolocationService.createGeolocation(new Geolocation(inputLatitude, inputLongitude, inputElevation));
+            fail("Adjust this test! Exception has not been triggered");
+
+        } catch (GeolocationInsertException e) {
+            // THEN
+            verify(geolocationRepo).save(new Geolocation(inputLatitude, inputLongitude, inputElevation));
+            assertEquals("We're sorry - The object cannot not be created appropriately at this time.", e.getMessage());
+        }
+    }
+
 }

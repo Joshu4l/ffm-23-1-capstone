@@ -1,8 +1,8 @@
 package de.groupsethero.backend.controller;
+import de.groupsethero.backend.exceptions.GeolocationInsertException;
 import de.groupsethero.backend.models.Geolocation;
-import de.groupsethero.backend.GeolocationException;
+import de.groupsethero.backend.exceptions.GeolocationRetrievalException;
 import de.groupsethero.backend.service.GeolocationService;
-import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -22,7 +22,7 @@ public class GeolocationController {
     // APIs & REQUEST MAPPINGS
     @GetMapping("/geolocations")
     @ResponseStatus(HttpStatus.OK)
-    public List<Geolocation> getAllGeolocations() throws GeolocationException {
+    public List<Geolocation> getAllGeolocations() throws GeolocationRetrievalException {
         return geolocationService.getAllGeolocations();
     }
 
@@ -34,16 +34,16 @@ public class GeolocationController {
 
     @PostMapping("/geolocations")
     @ResponseStatus(HttpStatus.CREATED)
-    public Geolocation createGeolocation(@RequestBody Geolocation geolocation) throws DataAccessException {
+    public Geolocation createGeolocation(@RequestBody Geolocation geolocation) throws GeolocationInsertException {
         return geolocationService.createGeolocation(geolocation);
     }
 
 
 
     // EXCEPTION HANDLING
-    @ExceptionHandler(GeolocationException.class)
+    @ExceptionHandler(GeolocationRetrievalException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public String handleGeolocationException() {
+    public String handleGeolocationRetrievalException() {
         return "Request cannot be served at this time.\n" +
                 "You may try to narrow down either your request criteria or the desired number of results";
     }
@@ -52,9 +52,9 @@ public class GeolocationController {
     public String handleNoSuchElementException() {
         return "Nothing here - The geolocation specified doesn't seem to exist";
     }
-    @ExceptionHandler(DataAccessException.class)
+    @ExceptionHandler(GeolocationInsertException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String handleDataAccessException() {
+    public String handleGeolocationInsertException() {
         return "We're sorry - The object cannot not be created appropriately at this time.";
     }
 

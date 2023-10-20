@@ -1,9 +1,9 @@
 package de.groupsethero.backend.service;
-import de.groupsethero.backend.GeolocationException;
+import de.groupsethero.backend.exceptions.GeolocationInsertException;
+import de.groupsethero.backend.exceptions.GeolocationRetrievalException;
 import de.groupsethero.backend.models.Geolocation;
 import de.groupsethero.backend.repository.GeolocationRepo;
 import lombok.RequiredArgsConstructor;
-import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -15,11 +15,11 @@ public class GeolocationService {
     private final GeolocationRepo geolocationRepo;
 
 
-    public List<Geolocation> getAllGeolocations() throws GeolocationException {
+    public List<Geolocation> getAllGeolocations() throws GeolocationRetrievalException {
         try {
             return geolocationRepo.findAll();
         } catch (Exception e) {
-            throw new GeolocationException(e.getMessage());
+            throw new GeolocationRetrievalException(e.getMessage());
         }
     }
 
@@ -27,7 +27,7 @@ public class GeolocationService {
             return geolocationRepo.findById(id).orElseThrow();
     }
 
-    public Geolocation createGeolocation(Geolocation geolocation) throws DataAccessException {
+    public Geolocation createGeolocation(Geolocation geolocation) throws GeolocationInsertException {
         return geolocationRepo.save(geolocation);
     }
 }
