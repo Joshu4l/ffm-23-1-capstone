@@ -1,4 +1,4 @@
-package models;
+package de.groupsethero.backend.models;
 import de.groupsethero.backend.models.Geolocation;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

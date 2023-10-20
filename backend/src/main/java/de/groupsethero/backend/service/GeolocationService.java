@@ -23,12 +23,16 @@ public class GeolocationService {
         }
     }
 
-    public Geolocation getGeolocationById(String id) throws NoSuchElementException{
+    public Geolocation getGeolocationById(String id) throws NoSuchElementException {
             return geolocationRepo.findById(id).orElseThrow();
     }
 
     public Geolocation createGeolocation(Geolocation geolocation) throws GeolocationInsertException {
-        return geolocationRepo.save(geolocation);
+        try {
+            return geolocationRepo.save(geolocation);
+        } catch (Exception e) {
+            throw new GeolocationInsertException(e.getMessage());
+        }
     }
 }
 

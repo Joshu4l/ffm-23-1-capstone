@@ -28,7 +28,7 @@ public class GeolocationController {
 
     @GetMapping("/geolocations/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Geolocation getGeolocationById(@PathVariable String id) throws NoSuchElementException{
+    public Geolocation getGeolocationById(@PathVariable String id) throws NoSuchElementException {
         return geolocationService.getGeolocationById(id);
     }
 
@@ -55,7 +55,7 @@ public class GeolocationController {
     @ExceptionHandler(GeolocationInsertException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public String handleGeolocationInsertException() {
-        return "We're sorry - The object cannot not be created appropriately at this time.";
+        return "We're sorry - The object cannot not be created at this time.";
     }
 
 }

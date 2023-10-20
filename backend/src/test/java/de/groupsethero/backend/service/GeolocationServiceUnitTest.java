@@ -11,7 +11,7 @@ import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-class GeolocationServiceTest {
+class GeolocationServiceUnitTest {
 
     // Global Instances for Service-Test-Purposes
     GeolocationRepo geolocationRepo = mock(GeolocationRepo.class);
@@ -40,7 +40,7 @@ class GeolocationServiceTest {
     void getAllGeolocationsGivenSingleEntry_expectListOfOneElement() throws GeolocationRetrievalException {
 
         //GIVEN
-        Geolocation singleEntry = new Geolocation(47.3, 5.9, 238.71);
+        Geolocation singleEntry = new Geolocation("validId", 47.3, 5.9, 238.71);
         List<Geolocation> geolocationList = List.of(singleEntry);
         when(geolocationRepo.findAll()).thenReturn(geolocationList);
 
@@ -48,7 +48,7 @@ class GeolocationServiceTest {
         List<Geolocation> actual = geolocationService.getAllGeolocations();
 
         //THEN
-        List<Geolocation> expected = List.of(new Geolocation(47.3, 5.9, 238.71));
+        List<Geolocation> expected = List.of(new Geolocation("validId", 47.3, 5.9, 238.71));
         verify(geolocationRepo).findAll();
         assertEquals(expected, actual);
     }
@@ -101,19 +101,20 @@ class GeolocationServiceTest {
 
     // GET BY ID
     @Test
-    void getGeolocationByIdGivenValidId_expectOneElement() throws NoSuchElementException {
+    void getGeolocationByIdGivenValidId_expectOneValidReturnObject() throws NoSuchElementException {
+
         // GIVEN
         String validId = "653063420c470e5631cc4dba";
+        Geolocation singleSavedObject = new Geolocation(validId, 47.3, 5.9, 238.71);
 
-        Geolocation singleEntry = new Geolocation(47.3, 5.9, 238.71);
         when(geolocationRepo.findById(validId))
-                .thenReturn(Optional.of(singleEntry));
+                .thenReturn(Optional.of(singleSavedObject));
 
         // WHEN
         Geolocation actual = geolocationService.getGeolocationById(validId);
 
         // THEN
-        Geolocation expected = new Geolocation(47.3, 5.9, 238.71);
+        Geolocation expected = new Geolocation("653063420c470e5631cc4dba", 47.3, 5.9, 238.71);
         verify(geolocationRepo).findById(validId);
         assertEquals(expected, actual);
     }
@@ -160,7 +161,6 @@ class GeolocationServiceTest {
         Geolocation expected = new Geolocation(inputLatitude, inputLongitude, inputElevation);
         verify(geolocationRepo).save(new Geolocation(inputLatitude, inputLongitude, inputElevation));
         assertEquals(expected, actual);
-
     }
 
     @Test
@@ -170,7 +170,7 @@ class GeolocationServiceTest {
         double inputLongitude = 5.9;
         double inputElevation = 238.71;
         when(geolocationRepo.save(new Geolocation(inputLatitude, inputLongitude, inputElevation)))
-                .thenThrow(new GeolocationInsertException("We're sorry - The object cannot not be created appropriately at this time."));
+                .thenThrow(new GeolocationInsertException("We're sorry - The object cannot not be created at this time."));
 
         try {
             // WHEN
@@ -180,7 +180,7 @@ class GeolocationServiceTest {
         } catch (GeolocationInsertException e) {
             // THEN
             verify(geolocationRepo).save(new Geolocation(inputLatitude, inputLongitude, inputElevation));
-            assertEquals("We're sorry - The object cannot not be created appropriately at this time.", e.getMessage());
+            assertEquals("We're sorry - The object cannot not be created at this time.", e.getMessage());
         }
     }
 
