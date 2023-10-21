@@ -127,8 +127,7 @@ class GeolocationControllerIntegrationTest {
                 """));
     }
     // TODO: GetById-Exceptionfall "GeolocationRetrievalException" !
-
-
+    
 
 
 //TODO: Alle Tests für CREATE (insgesamt nur 2 Tests):
