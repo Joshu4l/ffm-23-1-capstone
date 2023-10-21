@@ -1,4 +1,4 @@
-package de.groupsethero.backend;
+package de.groupsethero.backend.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

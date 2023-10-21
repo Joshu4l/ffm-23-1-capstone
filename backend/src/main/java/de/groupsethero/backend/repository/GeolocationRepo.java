@@ -1,4 +1,5 @@
-package de.groupsethero.backend;
+package de.groupsethero.backend.repository;
+import de.groupsethero.backend.models.Geolocation;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

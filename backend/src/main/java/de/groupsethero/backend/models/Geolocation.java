@@ -1,7 +1,8 @@
-package de.groupsethero.backend;
+package de.groupsethero.backend.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
 
 @Data
 @AllArgsConstructor
@@ -9,9 +10,19 @@ import lombok.NoArgsConstructor;
 public class Geolocation {
 
     //ATTRIBUTES
+    @Id
+    private String _id;
     private double latitude;
     private double longitude;
     private double elevation;
+
+
+    public Geolocation(double latitude, double longitude, double elevation) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.elevation = elevation;
+    }
+
 
     //CUSTOM METHODS
     public String convertToDegreeMinuteSecondFormat() {
@@ -35,6 +46,6 @@ public class Geolocation {
                 lonDegrees, lonMinutes, lonSeconds, inputLongitudeCardinalDirection);
     }
 
-    // GETTERS, SETTERS AND OVERRIDES AUTOMATICALLY CREATED BY LOMBOK's @Data ANNOTATION
+    // GETTERS, SETTERS AND OVERRIDE METHODS AUTOMATICALLY CREATED BY LOMBOK'S @Data ANNOTATION
 
 }
