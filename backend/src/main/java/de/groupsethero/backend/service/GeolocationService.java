@@ -27,13 +27,18 @@ public class GeolocationService {
             return geolocationRepo.findById(id).orElseThrow();
     }
 
-    public Geolocation createGeolocation(Geolocation geolocation) throws GeolocationInsertException {
+//TODO:
+
+/*    public Geolocation createGeolocation(Geolocation geolocation) throws GeolocationInsertException {
+
         try {
             return geolocationRepo.save(geolocation);
         } catch (Exception e) {
             throw new GeolocationInsertException(e.getMessage());
         }
-    }
+    }*/
+
+
 }
 
 

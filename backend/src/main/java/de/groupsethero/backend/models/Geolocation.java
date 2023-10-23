@@ -1,21 +1,31 @@
 package de.groupsethero.backend.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.validation.annotation.Validated;
+import javax.validation.constraints.NotNull;
+
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Validated
 public class Geolocation {
 
     //ATTRIBUTES
     @Id
-    private String _id;
+    private String id;
+    @NotNull
     private double latitude;
+    @NotNull
     private double longitude;
+    @NotNull
     private double elevation;
 
+
+    // CONSTRUCTORS
+    public Geolocation() {
+        // Default Constructor
+    }
 
     public Geolocation(double latitude, double longitude, double elevation) {
         this.latitude = latitude;
