@@ -1,5 +1,4 @@
 package de.groupsethero.backend.service;
-import de.groupsethero.backend.exceptions.GeolocationInsertException;
 import de.groupsethero.backend.exceptions.GeolocationRetrievalException;
 import de.groupsethero.backend.models.Geolocation;
 import de.groupsethero.backend.repository.GeolocationRepo;
@@ -27,16 +26,6 @@ public class GeolocationService {
             return geolocationRepo.findById(id).orElseThrow();
     }
 
-//TODO:
-
-/*    public Geolocation createGeolocation(Geolocation geolocation) throws GeolocationInsertException {
-
-        try {
-            return geolocationRepo.save(geolocation);
-        } catch (Exception e) {
-            throw new GeolocationInsertException(e.getMessage());
-        }
-    }*/
 
 
 }
