@@ -10,7 +10,6 @@ export default function App() {
     const { location, determineGeolocation } = useGeolocation()
 
     return (
-
         <>
             <Header/>
             <div className="container">
@@ -24,7 +23,6 @@ export default function App() {
                 </div>
 
 
-
                 <div className="imageDiv">
                     <div>
                         <img id="de-map" src={germanyMap} alt="DE-Map" />
@@ -33,7 +31,6 @@ export default function App() {
                         <img id="cyclist-gif" src={cyclistGif} alt="n.a."/>
                     </div>
                 </div>
-
 
 
                 <div>
@@ -52,7 +49,6 @@ export default function App() {
                 </div>
             </div>
             <Footer/>
-
         </>
     )
 }
