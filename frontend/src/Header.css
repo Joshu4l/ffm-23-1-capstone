@@ -1,0 +1,22 @@
+.navbar {
+    height: 110px;
+    background: #236cea;
+
+    display: flex;
+    place-items: center;
+    justify-content: center;
+
+    align-items: center;
+
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 800;
+    font-size: 30px;
+
+    color-scheme: light dark;
+    color: rgba(246, 246, 246, 0.87);
+}
+
+
+
+

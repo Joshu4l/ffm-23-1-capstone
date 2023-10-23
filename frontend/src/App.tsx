@@ -1,35 +1,58 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import useGeolocation from './useGeolocation.tsx';
+import germanyMap from "./assets/de.svg";
+import cyclistGif from "./assets/ezgif.com-crop.gif";
+import Footer from "./Footer.tsx";
+import Header from "./Header.tsx"; // Stellen Sie sicher, dass Sie den richtigen Pfad angeben
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    const { location, determineGeolocation } = useGeolocation()
+
+    return (
+
+        <>
+            <Header/>
+            <div className="container">
+
+                <div>
+                    <div className="introductionBox">
+                        <p>Welcome to GroupsetHero - your assistant for equipping your roadbike with the optimal groupset!</p>
+                        <p>We want to help you ensure, you're always pedalling with ease, considering the terrain and elevation levels of your environment. :) </p>
+                        <p>- Say goodbye to bobbing from too light gears as well as to breaking a sweat from grinding on too heavy ones. </p>
+                    </div>
+                </div>
+
+
+
+                <div className="imageDiv">
+                    <div>
+                        <img id="de-map" src={germanyMap} alt="DE-Map" />
+                    </div>
+                    <div>
+                        <img id="cyclist-gif" src={cyclistGif} alt="n.a."/>
+                    </div>
+                </div>
+
+
+
+                <div>
+                    <button onClick={determineGeolocation}>Determine your current location</button>
+                    {
+                        location.loaded ?
+                        (
+                            <div>
+                                <strong>Latitude: {location.coordinates?.lat}</strong><br />
+                                <strong>Longitude: {location.coordinates?.lng}</strong>
+                            </div>
+                        )
+                        :
+                        ( <div>{location.errorMessage}</div> )
+                    }
+                </div>
+            </div>
+            <Footer/>
+
+        </>
+    )
 }
-
-export default App
