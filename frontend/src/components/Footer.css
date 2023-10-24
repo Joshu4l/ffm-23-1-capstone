@@ -1,0 +1,12 @@
+Footer {
+    align-self: flex-end;
+}
+
+#landscape-banner {
+    display: flex;
+    width: 100%;
+    height: auto;
+}
+
+
+

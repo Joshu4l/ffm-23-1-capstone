@@ -1,0 +1,62 @@
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.returnContainer {
+  justify-content: space-between;
+}
+
+.introductionBox {
+  margin: 20px;
+  padding: 15px;
+}
+
+.imageDiv {
+  display: flex;
+  justify-content: center;
+}
+
+#location-pin {
+  margin: 5px;
+  z-index: 5;
+  width: auto;
+  height: auto;
+  max-width: 140px;
+  max-height: 140px;
+  left: 400px;
+}
+#cyclist-gif {
+  margin: -10px;
+  padding: 10px;
+  width: auto;
+  height: auto;
+  max-width: 200px;
+  max-height: 250px;
+}
+
+button:hover {
+  border-color: rgba(45, 43, 43, 0.87);
+  filter: drop-shadow(0 0 1em #757574);
+}
+
+input {
+  color: rgba(23, 23, 23, 0.87);
+  font-family: inherit;
+  font-size: 1em;
+  font-weight: 500;
+  text-align: right;
+
+  background-color: #FEEBC0;
+  border: 1px solid #213547;
+  border-radius: 8px;
+
+  width: 13%;
+  padding: 0.6em 1.2em;
+  margin: 5px;
+
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
