@@ -3,7 +3,7 @@ import { useState } from "react";
 // TYPE PREPARATION
 type LocationData = {
     loaded: boolean
-    coordinates?: { lat: string, lng: string }
+    coordinates?: { lat: number, lng: number }
     errorMessage: string
 }
 
@@ -25,7 +25,7 @@ const useGeolocation = () => {
         setLocation(
         {
                 loaded: true,
-                coordinates: { lat: location.coords.latitude.toString(), lng: location.coords.longitude.toString() },
+                coordinates: { lat: location.coords.latitude, lng: location.coords.longitude },
                 errorMessage: ""
                 }
         );

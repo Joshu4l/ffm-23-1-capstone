@@ -9,6 +9,9 @@ export default function App() {
 
     const { location, determineGeolocation } = useGeolocation()
 
+
+
+
     return (
         <>
             <Header/>
@@ -34,18 +37,36 @@ export default function App() {
 
 
                 <div>
-                    <button onClick={determineGeolocation}>Determine your current location</button>
+                    <div>
                     {
                         location.loaded ?
-                        (
-                            <div>
-                                <strong>Latitude: {location.coordinates?.lat}</strong><br />
-                                <strong>Longitude: {location.coordinates?.lng}</strong>
-                            </div>
-                        )
+                            (
+                                <>
+
+                                    <form>
+                                        <label>
+                                            <strong><input defaultValue={location.coordinates?.lat.toFixed(4)}/></strong>
+                                        </label>
+                                                <br/>
+                                        <label>
+                                            <strong><input defaultValue={location.coordinates?.lng.toFixed(4)}/></strong>
+                                        </label>
+                                                <br/>
+                                        <div>
+                                            <button>Submit and Continue</button>
+                                        </div>
+                                    </form>
+                                </>
+                            )
                         :
-                        ( <div>{location.errorMessage}</div> )
+                            (
+                                <button onClick={determineGeolocation}>Determine your current location</button>
+                            )
+
                     }
+                    </div>
+
+
                 </div>
             </div>
             <Footer/>
