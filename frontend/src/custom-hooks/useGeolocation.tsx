@@ -1,9 +1,10 @@
 import { useState } from "react";
 
+
 // TYPE PREPARATION
-type LocationData = {
+export type LocationData = {
     loaded: boolean
-    coordinates?: { lat: number, lng: number }
+    coordinates: { lat: number, lng: number }
     errorMessage: string
 }
 
@@ -16,6 +17,7 @@ const useGeolocation = () => {
         {
                     loaded: false,
                     errorMessage: "",
+                    coordinates: {lat: 0.0000, lng: 0.0000}
                    }
         );
 
@@ -27,18 +29,18 @@ const useGeolocation = () => {
                 loaded: true,
                 coordinates: { lat: location.coords.latitude, lng: location.coords.longitude },
                 errorMessage: ""
-                }
-        );
-    };
-
+              }
+        )
+    }
 
     // FAILURE SCENARIO
     const onError = (error: GeolocationPositionError) => {
         setLocation({
             loaded: true,
             errorMessage: error.message || "Geolocation not supported!",
-        });
-    };
+            coordinates: {lat: 0.0000, lng: 0.0000}
+        })
+    }
 
 
     // COPING WITH THE ACTUAL BUTTON CLICK
@@ -46,19 +48,18 @@ const useGeolocation = () => {
 
         if (!("geolocation" in navigator)) {
             const error: GeolocationPositionError = {
-                code: 2, // You can use any appropriate code from GeolocationPositionError
+                code: 2,
                 message: "Geolocation not supported",
-                PERMISSION_DENIED: 1, // Optional, you can set it to 1 or leave it out
-                POSITION_UNAVAILABLE: 2, // Optional, you can set it to 2 or leave it out
-                TIMEOUT: 3 // Optional, you can set it to 3 or leave it out
-            };
-            onError(error);
-        } else {
-            navigator.geolocation.getCurrentPosition(onSuccess, onError);
-        }
-    };
+                PERMISSION_DENIED: 1,
+                POSITION_UNAVAILABLE: 2,
+                TIMEOUT: 3
+            }
+            onError(error)
 
-    return { location, determineGeolocation };
-};
+        } else { navigator.geolocation.getCurrentPosition(onSuccess, onError) }
+    }
+    return { location, determineGeolocation }
 
+
+}
 export default useGeolocation;

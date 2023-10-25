@@ -1,21 +1,20 @@
-
-/*type UserlocationProps = {
+//PROPS
+export type UserlocationProps = {
     latitude: number,
     longitude: number
-}*/
+}
 
-export default function UserlocationForm () {
 
-    return(
-        <>
-        <form>
-            <label>
-                <strong><input defaultValue=""/></strong>
-            </label>
-            <label>
-                <strong><input defaultValue=""/></strong>
-            </label>
-        </form>
-    </>
-    )
+// FUNCTION
+export default function UserlocationForm(props: UserlocationProps) {
+
+    return (
+        <div>
+
+            Dies ist meine UserlocationForm Component
+            <p>Latitude: {props.latitude}</p>
+            <p>Longitude: {props.longitude}</p>
+
+        </div>
+    );
 }
