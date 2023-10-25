@@ -10,7 +10,7 @@ public class Userlocation {
     @Id
     private String id;
     private String userName;
-    private String locationDescription;
+    private String areaDesignation;
     private double latitude;
     private double longitude;
     private int radiusInKM;

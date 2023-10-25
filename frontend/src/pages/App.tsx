@@ -4,8 +4,8 @@ import Home from './Home.tsx';
 import UserlocationForm from './UserlocationForm.tsx';
 import Header from '../components/Header.tsx';
 import Footer from '../components/Footer.tsx';
-import IntroductionBox from '../components/IntroductionBox.tsx';
 import useGeolocation from "../custom-hooks/useGeolocation.tsx";
+import IntroductionBox from "../components/IntroductionBox.tsx";
 
 export default function App() {
 
@@ -18,7 +18,7 @@ export default function App() {
 
             <Header />
 
-            <IntroductionBox />
+            <IntroductionBox/>
 
             <div style={{ flex: 1 }}>
                 <Routes>

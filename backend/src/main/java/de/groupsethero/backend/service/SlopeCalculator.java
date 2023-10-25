@@ -60,7 +60,7 @@ class SlopeCalculator {
 
         UserlocationDTO inputPoint = UserlocationDTO.builder()
                 .userName("josh")
-                .locationDescription("my first test location")
+                .areaDesignation("my first test location")
                 .latitude(49.83)
                 .longitude(10.73)
                 .radiusInKM(50)

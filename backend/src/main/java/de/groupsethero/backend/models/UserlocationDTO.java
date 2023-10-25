@@ -6,9 +6,9 @@ import lombok.Data;
 @Builder
 public class UserlocationDTO {
 
-    private String userName;
-    private String locationDescription;
     private double latitude;
     private double longitude;
     private int radiusInKM;
+    private String areaDesignation;
+    private String userName;
 }

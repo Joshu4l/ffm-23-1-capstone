@@ -44,3 +44,7 @@ button {
     cursor: pointer;
     transition: border-color 1s;
 }
+button:hover {
+    border-color: rgba(45, 43, 43, 0.87);
+    filter: drop-shadow(0 0 1em #757574);
+}
