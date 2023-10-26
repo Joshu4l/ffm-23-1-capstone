@@ -1,0 +1,39 @@
+.navbar {
+    height: 110px;
+    background: #236cea;
+
+    display: flex;
+    place-items: center;
+    justify-content: center;
+
+    align-items: center;
+
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 800;
+    font-size: 30px;
+
+    color-scheme: light dark;
+    color: rgba(255, 255, 255, 0.87);
+}
+
+#burger-menu-svg {
+    height: 40px;
+    width: 40px;
+    padding: 5px;
+    vertical-align: middle;
+    position: absolute;
+    left: 70px;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    border: 1px solid;
+    border-radius: 10%;
+}
+
+#sprocket-svg {
+    height: 60px;
+    width: 60px;
+    padding: 10px;
+    vertical-align: middle;
+
+}

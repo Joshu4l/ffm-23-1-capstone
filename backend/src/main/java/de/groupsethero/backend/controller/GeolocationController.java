@@ -32,15 +32,6 @@ public class GeolocationController {
         return geolocationService.getGeolocationById(id);
     }
 
-/*    @PostMapping("/geolocations")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Geolocation createGeolocation(@RequestBody @Valid Geolocation geolocation) throws GeolocationInsertException {
-
-        System.out.println(geolocation.getElevation());
-
-        return geolocationService.createGeolocation(geolocation);
-    }*/
-
 
 
     // EXCEPTION HANDLING
@@ -55,13 +46,5 @@ public class GeolocationController {
     public String handleNoSuchElementException() {
         return "Nothing here - The geolocation specified doesn't seem to exist";
     }
-
-//TODO:
-
-/*    @ExceptionHandler(GeolocationInsertException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String handleGeolocationInsertException() {
-        return "We're sorry - The object cannot not be created at this time.";
-    }*/
 
 }
