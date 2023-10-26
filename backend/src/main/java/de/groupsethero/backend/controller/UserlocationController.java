@@ -1,19 +1,22 @@
 package de.groupsethero.backend.controller;
+import de.groupsethero.backend.models.Userlocation;
 import de.groupsethero.backend.models.UserlocationDTO;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import de.groupsethero.backend.service.UserlocationService;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import lombok.RequiredArgsConstructor;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api")
 public class UserlocationController {
 
-    @PostMapping("/userlocations")
-    public UserlocationDTO createUserlocation (@RequestBody UserlocationDTO userlocationDTO) {
-        System.out.println(userlocationDTO);
-        return userlocationDTO;
+    private final UserlocationService userlocationService;
 
+    @PostMapping("/userlocations")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Userlocation createUserlocation (@RequestBody UserlocationDTO userlocationDTO) {
+        return userlocationService.createUserlocation(userlocationDTO);
     }
 
 }

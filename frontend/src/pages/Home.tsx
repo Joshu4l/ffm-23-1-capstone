@@ -55,7 +55,7 @@ export default function Home(props: HomeProps) {
                     </div>
                     <br/>
 
-                    <button onClick={props.determineGeolocation}>Start determining your current location &#x1F4CC;</button>
+                    <button onClick={props.determineGeolocation}>Start determining my current location &#x1F4CC;</button>
                 </>
             )}
         </div>

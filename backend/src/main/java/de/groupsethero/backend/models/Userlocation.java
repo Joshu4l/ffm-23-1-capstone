@@ -8,11 +8,13 @@ import org.springframework.data.annotation.Id;
 public class Userlocation {
 
     @Id
-    private String id;
-    private String userName;
-    private String areaDesignation;
+    private String id; // additional information in comparison to UserlocationDTO
+
     private double latitude;
     private double longitude;
-    private int radiusInKM;
-    private double elevationInPercent;
+    private int radiusInKm;
+    private String areaDesignation;
+    private String userName;
+
+    private double averageElevationInPercent; // additional information in comparison to UserlocationDTO
 }

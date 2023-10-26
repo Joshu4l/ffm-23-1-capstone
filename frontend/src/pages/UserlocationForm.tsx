@@ -1,4 +1,4 @@
-import {ChangeEvent, FormEvent, useEffect, useState} from 'react';
+import {ChangeEvent, FormEvent, useState} from 'react';
 import axios from "axios";
 import {Userlocation} from "./Entities.ts";
 
@@ -12,7 +12,7 @@ export default function UserlocationForm(props: UserlocationProps) {
     const [userlocation, setUserlocation] = useState<Userlocation | undefined>()
     const [latitude, setLatitude] = useState<number>(props.latitude)
     const [longitude, setLongitude] = useState<number>(props.longitude)
-    const [radius, setRadius] = useState<number>(0)
+    const [radiusInKm, setRadiusInKm] = useState<number>()
     const [areaDesignation, setAreaDesignation] = useState<string>("")
     const [userName, setUserName] = useState<string>("")
 
@@ -25,9 +25,9 @@ export default function UserlocationForm(props: UserlocationProps) {
         const newLongitude: number = Number(event.target.value)
         setLongitude(newLongitude);
     }
-    function changeRadius (event: ChangeEvent<HTMLInputElement>) {
+    function changeRadiusInKm (event: ChangeEvent<HTMLInputElement>) {
         const newRadius: number = Number(event.target.value);
-        setRadius(newRadius);
+        setRadiusInKm(newRadius);
     }
     function changeAreaDesignation (event: ChangeEvent<HTMLInputElement>) {
         const newAreaDesignation: string = event.target.value.toString()
@@ -46,7 +46,7 @@ export default function UserlocationForm(props: UserlocationProps) {
                 ...userlocation,
                 latitude: latitude,
                 longitude: longitude,
-                radius: radius,
+                radiusInKm: radiusInKm,
                 areaDesignation: areaDesignation,
                 userName: userName
                 }
@@ -60,32 +60,26 @@ export default function UserlocationForm(props: UserlocationProps) {
             });
     }
 
-    useEffect(() =>{
-
-        }, []
-    )
-
     return (
         <div id="userlocation-form-container">
             <form onSubmit={(event) => submitEditedUserlocation(event)}>
                 <div className="label-input">
                     <label><strong>LAT. coordinate:</strong></label>
                     <input type="number"
-                           defaultValue={props.latitude}
-                           value={latitude}
+                           value={props.latitude}
                            onChange={changeLatitude}/>
                 </div>
                 <div className="label-input">
                     <label><strong>LNG. coordinate:</strong></label>
-                    <input type="number" defaultValue={props.longitude}
-                           value={longitude}
+                    <input type="number"
+                           value={props.longitude}
                            onChange={changeLongitude}/>
                 </div>
                 <div className="label-input">
                     <label><strong>Radius in km:</strong></label>
                     <input type="number" id="radius-input"
-                           value={radius}
-                           onChange={changeRadius}/>
+                           value={radiusInKm}
+                           onChange={changeRadiusInKm}/>
                 </div>
                 <div className="label-input">
                     <label><strong>Designation of the area:</strong></label>
@@ -99,7 +93,7 @@ export default function UserlocationForm(props: UserlocationProps) {
                            value={userName}
                            onChange={changeUserName}/>
                 </div>
-                <button>Initialize Object</button>
+                <button>Finish and create this user location</button>
             </form>
 
         </div>

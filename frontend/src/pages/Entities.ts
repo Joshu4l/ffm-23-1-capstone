@@ -1,8 +1,7 @@
 export type Userlocation = {
     latitude: number,
     longitude: number,
-    radius: number,
+    radiusInKm: number,
     areaDesignation: string,
     userName: string
-
 }
