@@ -25,9 +25,6 @@ public class UserlocationService {
                 queryBoundaries.get(3)
         );
         double calculatedAverageElevationInPercent = geolocationService.calculateAverageElevationInPercent(
-                userlocationDTO.getLatitude(),
-                userlocationDTO.getLongitude(),
-                userlocationDTO.getRadiusInKm(),
                 databaseSubset
         );
 

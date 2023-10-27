@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     margin: 0 auto;
-    width: 50vw;
+    width: 46vw;
     max-width: 50%; /* Begrenzt die maximale Breite auf 50% des Elterncontainers */
 }
 
@@ -24,13 +24,18 @@ input {
     font-family: inherit;
     font-size: 1em;
     font-weight: 500;
+    text-align: right;
+
     background-color: #f6f6f6;
     border: 1px solid #213547;
     border-radius: 8px;
+
+    width: 15px;
     padding: 5px;
     margin: 1px;
+
     flex: 1;
-    text-align: right;
+
     cursor: pointer;
     transition: border-color 0.25s;
 }
