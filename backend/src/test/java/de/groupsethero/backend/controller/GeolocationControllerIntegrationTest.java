@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -128,68 +127,4 @@ class GeolocationControllerIntegrationTest {
     }
 
     // TODO: GetById-Exceptionfall "GeolocationRetrievalException" !
-
-
-
-    // CREATE
-/*    @Test
-    @DirtiesContext
-    void createGeolocationGivenValidObject_expectOneValidReturnObject() throws Exception {
-
-        // GIVEN
-        *//* Preparation steps n.a. in this scenario *//*
-
-        // WHEN
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/geolocations")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content("""
-                            {
-                                "latitude": 47.3,
-                                "longitude": 6.11,
-                                "elevation": 362.39
-                            }
-                        """)
-                )
-                // THEN
-                .andExpect(status().isCreated())
-                .andExpect(MockMvcResultMatchers.content().json("""
-                    {
-                        "latitude": 47.3,
-                        "longitude": 6.11,
-                        "elevation": 362.39
-                    }
-                """));
-    }*/
-
-
-
-/*    @Test
-    @DirtiesContext
-    //TODO: CreateGeolocation-Exceptionfall "GeolocationInsertException"
-    void createGeolocationGivenInvalidObject_expectException() throws Exception {
-
-        // GIVEN
-        *//* Object preparation n.a. in this scenario *//*
-
-        // WHEN
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/geolocations")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content("""
-                            {
-                                "latitude": null,
-                                "longitude": null
-                            }
-                        """)
-                )
-                // THEN
-                .andExpect(status().isBadRequest())
-                .andExpect(MockMvcResultMatchers.content().string(
-                    "We're sorry - The object cannot not be created at this time."
-                ));
-    }*/
-
-
-
-
-//DONE
 }

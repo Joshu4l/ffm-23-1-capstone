@@ -1,5 +1,5 @@
 package de.groupsethero.backend.service;
-import de.groupsethero.backend.exceptions.GeolocationInsertException;
+import de.groupsethero.backend.exceptions.RadiusInKmTooSmallException;
 import de.groupsethero.backend.exceptions.GeolocationRetrievalException;
 import de.groupsethero.backend.models.Geolocation;
 import de.groupsethero.backend.repository.GeolocationRepo;
@@ -140,9 +140,14 @@ class GeolocationServiceUnitTest {
 
 
 
+    // TODO: defineQueryBoundaries
+
+
+
+
     // DB COLLECTION SUBSET
     @Test
-    void getGeolocationSubsetToBeQueried_givenExistingLatAndLngBoundaries_expectSubsetOfFourObjects() throws GeolocationInsertException {
+    void getGeolocationSubsetToBeQueried_givenExistingLatAndLngBoundaries_expectSubsetOfFourObjects() {
 
         // GIVEN
         double lowerLatitudeBoundary = 47.3;
@@ -183,7 +188,7 @@ class GeolocationServiceUnitTest {
     }
 
     @Test
-    void getGeolocationSubsetToBeQueried_givenNonexistentLatAndLngValues_expectSubsetOfZeroObjects() throws GeolocationInsertException {
+    void getGeolocationSubsetToBeQueried_givenNonexistentLatAndLngValues_expectSubsetOfZeroObjects() {
 
         // GIVEN
         double lowerLatitudeBoundary = 50.00;
@@ -228,11 +233,9 @@ class GeolocationServiceUnitTest {
 
         // WHEN & THEN
         assertThrows(
-            GeolocationRetrievalException.class, () -> {
-                geolocationService.getGeolocationSubsetToBeQueried(
-                    lowerLatitudeBoundary, upperLatitudeBoundary, lowerLongitudeBoundary, upperLongitudeBoundary
-                );
-            }
+            GeolocationRetrievalException.class, () -> geolocationService.getGeolocationSubsetToBeQueried(
+                lowerLatitudeBoundary, upperLatitudeBoundary, lowerLongitudeBoundary, upperLongitudeBoundary
+            )
         );
 
     }
@@ -274,12 +277,10 @@ class GeolocationServiceUnitTest {
 
         // WHEN & THEN
         assertThrows(
-            IllegalArgumentException.class, () -> {
-                geolocationService.haversineDistance(
-                        coordinate1Lat, coordinate1Lng,
-                        coordinate2Lat, coordinate2Lng
-                );
-            }
+            IllegalArgumentException.class, () -> geolocationService.haversineDistance(
+                    coordinate1Lat, coordinate1Lng,
+                    coordinate2Lat, coordinate2Lng
+            )
         );
     }
 
@@ -287,7 +288,7 @@ class GeolocationServiceUnitTest {
 
     // AVERAGE ELEVATION IN PERCENT
     @Test
-    void calculateAverageElevationInPercent_givenSubsetOfNineLocations_ExpectPercentageValue () {
+    void calculateAverageElevationInPercent_givenSubsetOfNineLocations_ExpectPercentageValue () throws Exception {
         // GIVEN
         List<Geolocation> geolocationSubset = List.of(
                 new Geolocation(52.47, 13.4, 49.01),
@@ -309,16 +310,16 @@ class GeolocationServiceUnitTest {
     }
 
     @Test
-    void calculateAverageElevationInPercent_givenEmptyCollectionSubset_ExpectNull () {
+    void calculateAverageElevationInPercent_givenEmptyCollectionSubset_ExpectRadiusInKmTooSmallException () throws RadiusInKmTooSmallException {
         // GIVEN
         List<Geolocation> emptySubset = List.of();
 
-        // WHEN
-        Double actual = geolocationService.calculateAverageElevationInPercent(emptySubset);
-
-        // THEN
-        Double expected = null;
-        assertEquals(expected, actual);
+        // WHEN & THEN
+        assertThrows(
+            RadiusInKmTooSmallException.class, () -> geolocationService.calculateAverageElevationInPercent(
+                    emptySubset
+            )
+        );
     }
 
 }

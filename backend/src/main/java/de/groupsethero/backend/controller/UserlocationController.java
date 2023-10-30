@@ -1,4 +1,5 @@
 package de.groupsethero.backend.controller;
+import de.groupsethero.backend.exceptions.RadiusInKmTooSmallException;
 import de.groupsethero.backend.models.Userlocation;
 import de.groupsethero.backend.models.UserlocationDTO;
 import de.groupsethero.backend.service.UserlocationService;
@@ -15,7 +16,7 @@ public class UserlocationController {
 
     @PostMapping("/userlocations")
     @ResponseStatus(HttpStatus.CREATED)
-    public Userlocation createUserlocation (@RequestBody UserlocationDTO userlocationDTO) {
+    public Userlocation createUserlocation (@RequestBody UserlocationDTO userlocationDTO) throws RadiusInKmTooSmallException {
         return userlocationService.createUserlocation(userlocationDTO);
     }
 

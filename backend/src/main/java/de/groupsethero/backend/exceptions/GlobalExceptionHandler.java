@@ -28,4 +28,12 @@ public class GlobalExceptionHandler {
                 "You may try to narrow down either your request criteria or the desired number of results";
     }
 
+    @ExceptionHandler(RadiusInKmTooSmallException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String handleRadiusInKmTooSmallException() {
+        return "Request cannot be served at this time.\n" +
+               "The specified radius for your location seems to be too small for calculating plausible results.";
+    }
+
+
 }
