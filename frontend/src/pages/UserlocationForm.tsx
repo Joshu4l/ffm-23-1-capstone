@@ -2,6 +2,7 @@ import {ChangeEvent, FormEvent, useState} from 'react';
 import {UserlocationDTO} from "../components/Entities.ts";
 import "./UserlocationForm.css";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 export type UserlocationProps = {
     latitude: number,
@@ -17,6 +18,7 @@ export default function UserlocationForm(props: UserlocationProps) {
     const [areaDesignation, setAreaDesignation] = useState<string>("")
     const [userName, setUserName] = useState<string>("")
 
+    const navigate = useNavigate(); // ALREADY WORKING -> misses Styling for the component itself
 
     function changeLatitude(event: ChangeEvent<HTMLInputElement>) {
         const newLatitude: number = Number(event.target.value)
@@ -55,6 +57,7 @@ export default function UserlocationForm(props: UserlocationProps) {
             .then(response => {
                 console.log(response.data);
                 setUserlocation(response.data)
+                navigate("/userlocations") // ALREADY WORKING -> misses styling for the component itself
             })
             .catch(reason => {
                 console.log(reason);

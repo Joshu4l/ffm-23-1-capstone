@@ -6,11 +6,34 @@ import Header from '../components/Header.tsx';
 import Footer from '../components/Footer.tsx';
 import useGeolocation from "../custom-hooks/useGeolocation.tsx";
 import IntroductionBox from "../components/IntroductionBox.tsx";
+import UserlocationGallery from "./UserlocationGallery.tsx";
+import {useEffect, useState} from "react";
+import {Userlocation} from "../components/Entities.ts";
+import axios from "axios";
+
 
 export default function App() {
 
-    // STATE
+    // CUSTOM HOOK & STATE
     const { location, determineGeolocation } = useGeolocation();
+    const [userlocations, setUserlocations] = useState<Userlocation[]>([])
+
+    // RENDER BEHAVIOUR
+    useEffect(() => {
+        fetchUserlocationData();
+    }, []);
+
+
+    // AXIOS
+    function fetchUserlocationData() {
+        axios.get("/api/userlocations")
+            .then(response => {
+                setUserlocations(response.data)
+            })
+            .catch(reason => {
+                console.error(reason)
+            })
+    }
 
 
     return (
@@ -33,10 +56,18 @@ export default function App() {
                     />
 
                     <Route
-                        path="/userlocation"
+                        path="/userlocations/create"
                         element={<UserlocationForm
                                  latitude={location.coordinates.lat}
                                  longitude={location.coordinates?.lng}
+                                 />
+                        }
+                    />
+
+                    <Route
+                        path="/userlocations"
+                        element={<UserlocationGallery
+                                 userlocations={userlocations}
                                  />
                         }
                     />

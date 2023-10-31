@@ -42,7 +42,7 @@ export default function Home(props: HomeProps) {
 
                         <br/>
 
-                    <button onClick={() => navigate("/userlocation")} >
+                    <button onClick={() => navigate("/userlocations/create")} >
                         Submit to configure my user location &rarr;
                     </button>
                 </>

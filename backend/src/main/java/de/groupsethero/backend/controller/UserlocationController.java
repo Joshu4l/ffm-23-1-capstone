@@ -6,8 +6,8 @@ import de.groupsethero.backend.service.UserlocationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import lombok.RequiredArgsConstructor;
-
 import java.util.List;
+
 
 @RestController
 @RequiredArgsConstructor
@@ -27,6 +27,5 @@ public class UserlocationController {
     public List<Userlocation> getAllUserlocations () {
         return userlocationService.getAllUserlocations();
     }
-
 
 }
