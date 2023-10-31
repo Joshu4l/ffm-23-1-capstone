@@ -1,10 +1,12 @@
 package de.groupsethero.backend.models;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 
 @Data
 @Builder
+@AllArgsConstructor
 public class Userlocation {
 
     @Id
@@ -15,6 +17,7 @@ public class Userlocation {
     private int radiusInKm;
     private String areaDesignation;
     private String userName;
-
+    
     private double averageElevationInPercent; // additional information in comparison to UserlocationDTO
+
 }

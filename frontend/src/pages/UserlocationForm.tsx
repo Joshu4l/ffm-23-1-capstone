@@ -1,6 +1,7 @@
 import {ChangeEvent, FormEvent, useState} from 'react';
-import axios from "axios";
 import {Userlocation} from "./Entities.ts";
+import "./UserlocationForm.css";
+import axios from "axios";
 
 export type UserlocationProps = {
     latitude: number,
@@ -67,12 +68,14 @@ export default function UserlocationForm(props: UserlocationProps) {
                     <label><strong>LAT. coordinate:</strong></label>
                     <input type="number"
                            value={props.latitude}
+                           maxLength={25}
                            onChange={changeLatitude}/>
                 </div>
                 <div className="label-input">
                     <label><strong>LNG. coordinate:</strong></label>
                     <input type="number"
                            value={props.longitude}
+                           maxLength={25}
                            onChange={changeLongitude}/>
                 </div>
                 <div className="label-input">
