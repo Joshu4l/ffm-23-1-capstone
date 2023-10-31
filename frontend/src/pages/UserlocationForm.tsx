@@ -1,5 +1,5 @@
 import {ChangeEvent, FormEvent, useState} from 'react';
-import {Userlocation} from "./Entities.ts";
+import {UserlocationDTO} from "../components/Entities.ts";
 import "./UserlocationForm.css";
 import axios from "axios";
 
@@ -10,7 +10,7 @@ export type UserlocationProps = {
 
 export default function UserlocationForm(props: UserlocationProps) {
 
-    const [userlocation, setUserlocation] = useState<Userlocation | undefined>()
+    const [userlocation, setUserlocation] = useState<UserlocationDTO | undefined>()
     const [latitude, setLatitude] = useState<number>(props.latitude)
     const [longitude, setLongitude] = useState<number>(props.longitude)
     const [radiusInKm, setRadiusInKm] = useState<number>()

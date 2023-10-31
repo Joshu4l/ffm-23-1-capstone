@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api")
@@ -19,5 +21,12 @@ public class UserlocationController {
     public Userlocation createUserlocation (@RequestBody UserlocationDTO userlocationDTO) throws RadiusInKmTooSmallException {
         return userlocationService.createUserlocation(userlocationDTO);
     }
+
+    @GetMapping("/userlocations")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Userlocation> getAllUserlocations () {
+        return userlocationService.getAllUserlocations();
+    }
+
 
 }

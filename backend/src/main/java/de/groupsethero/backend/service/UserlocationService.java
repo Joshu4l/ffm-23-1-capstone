@@ -42,4 +42,7 @@ public class UserlocationService {
         return userlocationRepo.save(newUserlocation);
     }
 
+    public List<Userlocation> getAllUserlocations() {
+        return userlocationRepo.findAll();
+    }
 }
