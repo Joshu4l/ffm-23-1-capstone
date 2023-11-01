@@ -18,7 +18,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(NoSuchElementException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String handleNoSuchElementException() {
-        return "Nothing here - The geolocation specified doesn't seem to exist";
+        return "Nothing here - The location specified doesn't seem to exist";
     }
 
     @ExceptionHandler(GeolocationRetrievalException.class)

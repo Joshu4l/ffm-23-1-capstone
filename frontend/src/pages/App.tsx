@@ -1,15 +1,15 @@
 import './App.css';
-import { Route, Routes } from 'react-router-dom';
+import {Navigate, Route, Routes} from 'react-router-dom';
 import Home from './Home.tsx';
 import UserlocationForm from './UserlocationForm.tsx';
 import Header from '../components/Header.tsx';
 import Footer from '../components/Footer.tsx';
 import useGeolocation from "../custom-hooks/useGeolocation.tsx";
-import IntroductionBox from "../components/IntroductionBox.tsx";
 import UserlocationGallery from "./UserlocationGallery.tsx";
 import {useEffect, useState} from "react";
 import {Userlocation} from "../components/Entities.ts";
 import axios from "axios";
+import UserlocationDetails from "./UserlocationDetails.tsx";
 
 
 export default function App() {
@@ -41,8 +41,6 @@ export default function App() {
 
             <Header />
 
-            <IntroductionBox/>
-
             <div style={{ flex: 1 }}>
                 <Routes>
 
@@ -58,8 +56,8 @@ export default function App() {
                     <Route
                         path="/userlocations/create"
                         element={<UserlocationForm
-                                 latitude={location.coordinates.lat}
-                                 longitude={location.coordinates?.lng}
+                                     latitude={location.coordinates.lat}
+                                     longitude={location.coordinates?.lng}
                                  />
                         }
                     />
@@ -67,7 +65,19 @@ export default function App() {
                     <Route
                         path="/userlocations"
                         element={<UserlocationGallery
-                                 userlocations={userlocations}
+                                    userlocations={userlocations}
+                                 />
+                        }
+                    />
+
+                    <Route path={"/userlocations/:id"}
+                           element={<UserlocationDetails/>}
+                    />
+
+                    <Route
+                        path="/*"
+                        element={<Navigate
+                                    to={"/"}
                                  />
                         }
                     />

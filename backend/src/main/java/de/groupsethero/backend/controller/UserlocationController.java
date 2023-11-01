@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import lombok.RequiredArgsConstructor;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 
 @RestController
@@ -26,6 +27,12 @@ public class UserlocationController {
     @ResponseStatus(HttpStatus.OK)
     public List<Userlocation> getAllUserlocations () {
         return userlocationService.getAllUserlocations();
+    }
+
+    @GetMapping("/userlocations/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Userlocation getUserlocationById (@PathVariable String id) throws NoSuchElementException {
+        return userlocationService.getUserlocationById(id);
     }
 
 }

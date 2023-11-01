@@ -28,13 +28,14 @@ body {
 
 }
 
-button {
+#edit-userlocation-button {
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
 
     border-radius: 10px;
-    background-color: #a4a028;
+    background-color: #656361;
+    color: #f6f6f6;
 
     border: 1px solid transparent;
 

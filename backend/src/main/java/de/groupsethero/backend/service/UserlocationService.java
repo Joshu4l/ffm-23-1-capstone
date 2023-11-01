@@ -7,6 +7,7 @@ import de.groupsethero.backend.repository.UserlocationRepo;
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 
 @Service
@@ -44,5 +45,9 @@ public class UserlocationService {
 
     public List<Userlocation> getAllUserlocations() {
         return userlocationRepo.findAll();
+    }
+
+    public Userlocation getUserlocationById(String id) throws NoSuchElementException {
+        return userlocationRepo.findById(id).orElseThrow();
     }
 }

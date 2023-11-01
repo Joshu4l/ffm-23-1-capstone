@@ -3,6 +3,7 @@ import {UserlocationDTO} from "../components/Entities.ts";
 import "./UserlocationForm.css";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import InstructionBox from "../components/InstructionBox.tsx";
 
 export type UserlocationProps = {
     latitude: number,
@@ -56,8 +57,9 @@ export default function UserlocationForm(props: UserlocationProps) {
             )
             .then(response => {
                 console.log(response.data);
-                setUserlocation(response.data)
-                navigate("/userlocations") // ALREADY WORKING -> misses styling for the component itself
+                setUserlocation(response.data);
+                const newLocationId = response.data.id; // extracting the resulting response-object's id
+                navigate(`/userlocations/${newLocationId}`); // using the extracted id to navigate to the UserlocationDetails component
             })
             .catch(reason => {
                 console.log(reason);
@@ -66,39 +68,49 @@ export default function UserlocationForm(props: UserlocationProps) {
 
     return (
         <div id="userlocation-form-container">
+
+            <p>There you go &#9989;</p>
+            <br/>
+
             <form onSubmit={(event) => submitEditedUserlocation(event)}>
                 <div className="label-input">
-                    <label><strong>LAT. coordinate:</strong></label>
+                    <label className="done"><strong>LAT. coordinate:</strong></label>
                     <input type="number"
                            value={props.latitude}
                            maxLength={25}
                            onChange={changeLatitude}/>
                 </div>
                 <div className="label-input">
-                    <label><strong>LNG. coordinate:</strong></label>
+                    <label className="done"><strong>LNG. coordinate:</strong></label>
                     <input type="number"
                            value={props.longitude}
                            maxLength={25}
                            onChange={changeLongitude}/>
                 </div>
+                <br/>
+
+                <InstructionBox/>
+
                 <div className="label-input">
-                    <label><strong>Radius in km:</strong></label>
+                    <label className="open"><strong>Radius in km:</strong></label>
                     <input type="number" id="radius-input"
                            value={radiusInKm}
                            onChange={changeRadiusInKm}/>
                 </div>
                 <div className="label-input">
-                    <label><strong>Designation of the area:</strong></label>
+                    <label className="open"><strong>Designation of the area:</strong></label>
                     <input type="text" id="designation-input"
                            value={areaDesignation}
                            onChange={changeAreaDesignation}/>
                 </div>
                 <div className="label-input">
-                    <label><strong>Your user name:</strong></label>
+                    <label className="open"><strong>Your user name:</strong></label>
                     <input type="text" id="username-input"
                            value={userName}
                            onChange={changeUserName}/>
                 </div>
+                <br/>
+
                 <button>Finish and create this user location</button>
             </form>
 

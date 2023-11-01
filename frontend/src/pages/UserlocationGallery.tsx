@@ -1,3 +1,4 @@
+/*
 import {Userlocation} from "../components/Entities.ts";
 import UserlocationDetails from "./UserlocationDetails.tsx";
 
@@ -6,8 +7,6 @@ type UserlocationGalleryProps = {
 }
 
 export default function UserlocationGallery (props: UserlocationGalleryProps) {
-
-
 
 
     return (
@@ -21,4 +20,4 @@ export default function UserlocationGallery (props: UserlocationGalleryProps) {
             }
         </div>
     )
-}
+}*/

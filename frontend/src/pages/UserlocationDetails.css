@@ -1,0 +1,49 @@
+#edit-container {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+#display-of-resulting-id-and-user {
+    margin: 50px;
+    color: #213547;
+    font-weight: bold;
+}
+
+#elevation-information {
+    border: 1px solid #757574;
+    border-radius: 15px;
+    align-self: center;
+}
+
+#elevation-information:hover {
+    border-color: rgba(45, 43, 43, 0.87);
+    filter: drop-shadow(0 0 1em #757574);
+}
+
+#calculated-average-elevation {
+    color: green;
+}
+
+button {
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+
+    border-radius: 10px;
+    background-color: #a4a028;
+
+    border: 1px solid transparent;
+
+    padding: 0.6em 1.2em;
+    margin: 5px;
+
+    cursor: pointer;
+    transition: border-color 1s;
+}
+button:hover {
+    border-color: rgba(45, 43, 43, 0.87);
+    filter: drop-shadow(0 0 1em #757574);
+}

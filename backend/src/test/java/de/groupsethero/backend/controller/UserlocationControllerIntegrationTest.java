@@ -32,7 +32,6 @@ class UserlocationControllerIntegrationTest {
     @Test
     @DirtiesContext
     void createUserlocation_givenUserlocationDTO_expectCompleteUserlocation() throws Exception{
-    // Happy Path :)
         // GIVEN
         geolocationRepo.save(new Geolocation(47.3, 6.1, 380.01));
         geolocationRepo.save(new Geolocation(47.3, 6.11, 362.39));
@@ -44,8 +43,8 @@ class UserlocationControllerIntegrationTest {
 
         // WHEN
         mockMvc.perform(MockMvcRequestBuilders.post("/api/userlocations")
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content("""
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("""
                     {
                         "latitude": 47.3,
                         "longitude": 6.11,
@@ -70,8 +69,8 @@ class UserlocationControllerIntegrationTest {
                     }
                     """)
                 );
-    }
 
+    }
     @Test
     @DirtiesContext
     void createUserlocation_givenUserlocationDTOHavingRadiusOfOneOrLessKm_expectRadiusInKmTooSmallException() throws Exception{
@@ -118,7 +117,6 @@ class UserlocationControllerIntegrationTest {
                         """)
                 );
     }
-
     @Test
     @DirtiesContext
     void getAllUserlocations_givenPopulatedDB_expectListOfMultipleUserlocationObjects() throws Exception{
@@ -160,5 +158,52 @@ class UserlocationControllerIntegrationTest {
                 );
     }
 
+
+    // GET BY ID
+    @Test
+    @DirtiesContext
+    void getUserlocationById_givenValidId_expectValidUserlocationObject() throws Exception {
+        // GIVEN
+        Userlocation singleEntry = new Userlocation(
+            "1234",
+            53.56542916701823,
+            9.952696889811424,
+            50,
+            "my area",
+            "josh",
+            0.31170052270624937
+        );
+        userlocationRepo.save(singleEntry);
+
+        // WHEN
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/userlocations/" + "1234"))
+                // THEN
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.content().json("""
+                    {
+                        "id": "1234",
+                        "latitude": 53.56542916701823,
+                        "longitude": 9.952696889811424,
+                        "radiusInKm": 50,
+                        "areaDesignation": "my area",
+                        "userName": "josh",
+                        "averageElevationInPercent": 0.31170052270624937
+                    }
+                    """)
+                );
+    }
+    @Test
+    @DirtiesContext
+    void getUserlocationById_givenInvalidId_expectNoSuchElementException() throws Exception {
+        // GIVEN n.a. in this case
+
+        // WHEN & THEN
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/userlocations/" + "quatschId"))
+                .andExpect(status().isNotFound())
+                .andExpect(MockMvcResultMatchers.content().string(
+                        "Nothing here - The location specified doesn't seem to exist"
+                ));
+
+    }
 
 }

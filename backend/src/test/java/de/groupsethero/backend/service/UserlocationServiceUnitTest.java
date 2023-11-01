@@ -3,10 +3,14 @@ import de.groupsethero.backend.models.Geolocation;
 import de.groupsethero.backend.models.Userlocation;
 import de.groupsethero.backend.models.UserlocationDTO;
 import de.groupsethero.backend.repository.UserlocationRepo;
+import org.apache.catalina.User;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 class UserlocationServiceUnitTest {
 
@@ -82,8 +86,8 @@ class UserlocationServiceUnitTest {
         List<Userlocation> expected = List.of();
         verify(userlocationRepo).findAll();
         assertEquals(expected, actual);
-    }
 
+    }
     @Test
     void getAllUserlocations_givenPopulatedDB_expectListOfMultipleUserlocationObjects() {
         // GIVEN
@@ -106,6 +110,57 @@ class UserlocationServiceUnitTest {
         );
         verify(userlocationRepo).findAll();
         assertEquals(expected, actual);
+
+    }
+
+
+    // GET BY ID
+    @Test
+    void getUserlocationById_givenValidId_expectValidUserlocationObject() throws NoSuchElementException {
+        // GIVEN
+        String validId = "1234";
+
+        Userlocation singleUserlocationResult = new Userlocation(
+            "1234",
+            53.56542916701823,
+            9.952696889811424,
+            50,
+            "area 51",
+            "josh",
+            0.31170052270624937
+        );
+        when(userlocationRepo.findById(validId)
+        ).thenReturn(Optional.of(singleUserlocationResult));
+
+
+        // WHEN
+        Userlocation actual = userlocationService.getUserlocationById(validId);
+
+        // THEN
+        Userlocation expected = new Userlocation(
+                "1234",
+                53.56542916701823,
+                9.952696889811424,
+                50,
+                "area 51",
+                "josh",
+                0.31170052270624937
+        );
+        verify(userlocationRepo).findById(validId);
+        assertEquals(expected, actual);
+
+    }
+    @Test
+    void getUserlocationById_givenInvalidId_expectNoSuchElementException() throws NoSuchElementException {
+        // GIVEN
+        String invalidId = "quatschId";
+
+        when(userlocationRepo.findById(invalidId)
+        ).thenReturn(Optional.empty());
+
+        // WHEN & THEN
+        assertThrows(NoSuchElementException.class, () -> userlocationService.getUserlocationById(invalidId));
+
     }
 
 }
