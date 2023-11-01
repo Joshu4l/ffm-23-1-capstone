@@ -13,15 +13,6 @@
   justify-content: center;
 }
 
-#location-pin {
-  margin: 5px;
-  z-index: 5;
-  width: auto;
-  height: auto;
-  max-width: 140px;
-  max-height: 140px;
-  left: 400px;
-}
 #cyclist-gif {
   margin: -10px;
   padding: 10px;

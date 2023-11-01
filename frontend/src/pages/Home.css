@@ -1,8 +1,22 @@
+#auto-locate-container {
+    margin: 60px auto;
+}
+
+#location-pin {
+    margin: 5px;
+    z-index: 5;
+    width: auto;
+    height: auto;
+    max-width: 140px;
+    max-height: 140px;
+    left: 400px;
+}
+
 
 .initial-form-container {
     display: flex;
     flex-direction: column;
-    width: 335px;
+    width: 31vw;
     justify-content: center;
     margin: 0 auto;
 }
@@ -32,4 +46,11 @@ input {
     text-align: right;
     cursor: pointer;
     transition: border-color 0.25s;
+    width: 50px;
+}
+
+#explain-courses-of-action {
+    text-align: justify;
+    margin: 0 auto;
+    width: 31vw;
 }
