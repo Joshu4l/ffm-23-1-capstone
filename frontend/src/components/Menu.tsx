@@ -1,4 +1,5 @@
 import "./Menu.css";
+import {Link} from "react-router-dom";
 
 interface MenuProps {
     isOpen: boolean;
@@ -10,19 +11,24 @@ export default function Menu({ isOpen, closeMenu }: MenuProps) {
     return (
         <div className={ `menu ${isOpen ? "open" : ""}` }>
 
-                <br/><br/>
+            <br/>
 
-            <ul>
-                <li><strong>Option 1</strong></li>
-                <li><strong>Option 2</strong></li>
-                <li><strong>Option 3</strong></li>
-            </ul>
+                <li className="navigation-option">
+                    <strong><Link to={"/"} > Home </Link></strong>
+                </li>
 
-                <br/>
+                <li className="navigation-option">
+                    <strong><Link to={"/"} > Option 2 </Link></strong>
+                </li>
+
+                <li className="navigation-option">
+                    <strong><Link to={"/"} > Option 3 </Link></strong>
+                </li>
+
+            <br/><br/>
 
             <button id="collapse-menu-button"
-                    onClick={closeMenu}
-            > &#xd7;
+                    onClick={closeMenu}> &#xd7;
             </button>
 
         </div>

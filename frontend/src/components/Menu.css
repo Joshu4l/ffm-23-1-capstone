@@ -17,15 +17,17 @@
     left: 0; /* allow for menu to 'appear' upon invoking the Menü wird sichtbar, wenn die "open" Klasse angewendet wird */
 }
 
-ul {
-    list-style: none;
+ul.navigation-list {
+    list-style: none; /* Entfernt die Punkte der Liste */
     padding: 0;
 }
 
-li {
-    padding: 10px;
+.navigation-option {
+    padding: 30px;
     border-bottom: 1px solid #ccc;
+    display: block; /* Stellt die Listenelemente als Blockelemente dar */
 }
+
 #collapse-menu-button {
     height:40px;
     width:40px;

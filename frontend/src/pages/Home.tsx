@@ -14,7 +14,7 @@ type HomeProps = {
 // FUNCTION
 export default function Home(props: HomeProps) {
 
-    // STATE
+    // NAVIGATION HOOK
     const navigate = useNavigate();
 
 
