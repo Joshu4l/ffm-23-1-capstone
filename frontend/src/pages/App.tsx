@@ -5,7 +5,6 @@ import UserlocationForm from './UserlocationForm.tsx';
 import Header from '../components/Header.tsx';
 import Footer from '../components/Footer.tsx';
 import useGeolocation from "../custom-hooks/useGeolocation.tsx";
-import UserlocationGallery from "./UserlocationGallery.tsx";
 import {useEffect, useState} from "react";
 import {Userlocation} from "../components/Entities.ts";
 import axios from "axios";
@@ -58,14 +57,6 @@ export default function App() {
                         element={<UserlocationForm
                                      latitude={location.coordinates.lat}
                                      longitude={location.coordinates?.lng}
-                                 />
-                        }
-                    />
-
-                    <Route
-                        path="/userlocations"
-                        element={<UserlocationGallery
-                                    userlocations={userlocations}
                                  />
                         }
                     />
