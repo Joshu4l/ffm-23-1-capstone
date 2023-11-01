@@ -1,12 +1,16 @@
 .menu {
     position: fixed;
     top: 0;
-    left: -300px; /* Startposition außerhalb des sichtbaren Bereichs */
+    left: -300px; /* starting position beyond other visual contents */
+
     width: 300px;
     height: 100%;
+
     background: white;
+    border: 1px solid rgb(117, 117, 116);
+
     transition: left 0.3s;
-    z-index: 2; /* Über den Rest der Seite legen */
+    z-index: 2; /* allow for the menu to visually overlay over other components */
 }
 
 .menu.open {
@@ -22,14 +26,19 @@ li {
     padding: 10px;
     border-bottom: 1px solid #ccc;
 }
-
 #collapse-menu-button {
+    height:40px;
+    width:40px;
+
+    background: #9e370b;
+
     padding: 10px;
-    background: #236cea;
+
     color: white;
     border: none;
     cursor: pointer;
 }
+
 #collapse-menu-button:hover {
     border-color: rgba(23, 23, 23, 0.87);
     filter: drop-shadow(0 0 0.5em #ababaa);
