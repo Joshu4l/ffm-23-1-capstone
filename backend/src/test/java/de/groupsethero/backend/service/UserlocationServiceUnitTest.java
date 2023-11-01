@@ -3,7 +3,6 @@ import de.groupsethero.backend.models.Geolocation;
 import de.groupsethero.backend.models.Userlocation;
 import de.groupsethero.backend.models.UserlocationDTO;
 import de.groupsethero.backend.repository.UserlocationRepo;
-import org.apache.catalina.User;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
