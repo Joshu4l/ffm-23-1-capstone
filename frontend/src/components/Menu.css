@@ -1,0 +1,36 @@
+.menu {
+    position: fixed;
+    top: 0;
+    left: -300px; /* Startposition außerhalb des sichtbaren Bereichs */
+    width: 300px;
+    height: 100%;
+    background: white;
+    transition: left 0.3s;
+    z-index: 2; /* Über den Rest der Seite legen */
+}
+
+.menu.open {
+    left: 0; /* allow for menu to 'appear' upon invoking the Menü wird sichtbar, wenn die "open" Klasse angewendet wird */
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+#collapse-menu-button {
+    padding: 10px;
+    background: #236cea;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+#collapse-menu-button:hover {
+    border-color: rgba(23, 23, 23, 0.87);
+    filter: drop-shadow(0 0 0.5em #ababaa);
+}
