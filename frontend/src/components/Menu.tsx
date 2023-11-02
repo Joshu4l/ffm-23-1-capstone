@@ -7,31 +7,25 @@ interface MenuProps {
 }
 
 export default function Menu({ isOpen, closeMenu }: MenuProps) {
-
     return (
-        <div className={ `menu ${isOpen ? "open" : ""}` }>
+        <div className={`menu ${isOpen ? "open" : ""}`}>
 
-            <br/>
+            <p className="navigation-option">
+                    <Link to={"/"}>Home</Link>
+            </p>
 
-                <li className="navigation-option">
-                    <strong><Link to={"/"} > Home </Link></strong>
-                </li>
+            <p className="navigation-option">
+                    <Link to={"/"}>Option 2</Link>
+            </p>
 
-                <li className="navigation-option">
-                    <strong><Link to={"/"} > Option 2 </Link></strong>
-                </li>
+            <p className="navigation-option">
+                    <Link to={"/"}>Option 3</Link>
+            </p>
 
-                <li className="navigation-option">
-                    <strong><Link to={"/"} > Option 3 </Link></strong>
-                </li>
 
-            <br/><br/>
-
-            <button id="collapse-menu-button"
-                    onClick={closeMenu}> &#xd7;
+            <button id="collapse-menu-button" onClick={closeMenu}>
+                &#xd7;
             </button>
-
         </div>
     );
-
 }

@@ -2,11 +2,12 @@
     position: fixed;
     top: 0;
     left: -300px; /* starting position beyond other visual contents */
+    color: #fcecc4;
 
     width: 300px;
     height: 100%;
 
-    background: white;
+    background: #213547FF;
     border: 1px solid rgb(117, 117, 116);
 
     transition: left 0.3s;
@@ -23,9 +24,21 @@ ul.navigation-list {
 }
 
 .navigation-option {
+    color: white;
+    font-weight: bold;
+
     padding: 30px;
+    margin-bottom: 10px;
+    margin-top: 7px;
+
     border-bottom: 1px solid #ccc;
-    display: block; /* Stellt die Listenelemente als Blockelemente dar */
+
+    display: block; /* instead of the default 'bullet point' type of <li/> */
+}
+
+a {
+    color: #FFF; /* Selektor to change the appearance of <Link/> as it's getting transpiled to <a/> */
+    text-decoration: none;
 }
 
 #collapse-menu-button {
@@ -35,6 +48,8 @@ ul.navigation-list {
     background: #9e370b;
 
     padding: 10px;
+    margin-top: 50px;
+    margin-bottom: 20px;
 
     color: white;
     border: none;

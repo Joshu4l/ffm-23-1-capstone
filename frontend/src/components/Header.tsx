@@ -7,15 +7,15 @@ import menuSvg from "../assets/burger-menu.svg"
 export default function Header() {
 
     // STATE
-    const [isMenuOpen, setMenuOpen] = useState<boolean>(false);
+    const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
     // CALLBACKS
     const openMenu = () => {
-        setMenuOpen(true);
+        setIsMenuOpen(true);
     };
 
     const closeMenu = () => {
-        setMenuOpen(false);
+        setIsMenuOpen(false);
     };
 
 
@@ -26,7 +26,7 @@ export default function Header() {
                 <img
                     id="burger-menu-svg"
                     src={menuSvg}
-                    alt=""
+                    alt="nivgation menu"
                     onClick={openMenu}
                 />
                 <h2>GroupsetHero</h2>{" "}
