@@ -1,4 +1,3 @@
-import "./Footer.css"
 import landscapeBanner from '../assets/landscapeBanner.jpg';
 
 export default function Footer () {

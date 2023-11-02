@@ -1,33 +1,46 @@
 .navbar {
     height: 110px;
     background: #236cea;
-
     display: flex;
-    place-items: center;
-    justify-content: center;
-
+    justify-content: space-between;
     align-items: center;
-
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
     font-weight: 800;
     font-size: 30px;
-
     color-scheme: light dark;
     color: rgba(255, 255, 255, 0.87);
 }
 
+.burger-menu {
+    display: flex;
+    align-items: center;
+}
+
+.burger-menu-button {
+    all: unset;
+    height: 36px;
+    width: 36px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-left: 55px; /* Adjust the margin as needed */
+}
+
 #burger-menu-svg {
-    height: 40px;
-    width: 40px;
-    padding: 5px;
-    vertical-align: middle;
-    position: absolute;
-    left: 70px;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
     cursor: pointer;
     transition: border-color 0.25s;
     border: 1px solid;
     border-radius: 10%;
+}
+
+.page-header {
+    margin: 0; /* Reset margin */
+    text-align: center; /* Center the text horizontally */
+    flex-grow: 1; /* Allow it to take up remaining space */
 }
 
 #sprocket-svg {
@@ -35,4 +48,5 @@
     width: 60px;
     padding: 10px;
     vertical-align: middle;
+    margin-right: 55px;
 }

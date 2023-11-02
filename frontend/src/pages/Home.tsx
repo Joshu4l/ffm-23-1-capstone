@@ -28,7 +28,6 @@ export default function Home(props: HomeProps) {
                     <div className="imageDiv">
                         <img id="location-pin" src={locationPin} alt="DE-Map" />
                     </div>
-                    <br/>
 
                     <p><strong>Gotcha! &#x1F609;</strong></p>
                     <br/>
