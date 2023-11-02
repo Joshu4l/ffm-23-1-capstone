@@ -1,0 +1,62 @@
+.menu {
+    position: fixed;
+    top: 0;
+    left: -300px; /* starting position beyond other visual contents */
+    color: #fcecc4;
+
+    width: 300px;
+    height: 100%;
+
+    background: #213547FF;
+    border: 1px solid rgb(117, 117, 116);
+
+    transition: left 0.3s;
+    z-index: 2; /* allow for the menu to visually overlay over other components */
+}
+
+.menu.open {
+    left: 0; /* allow for menu to 'appear' upon invoking the Menü wird sichtbar, wenn die "open" Klasse angewendet wird */
+}
+
+ul.navigation-list {
+    list-style: none; /* Entfernt die Punkte der Liste */
+    padding: 0;
+}
+
+.navigation-option {
+    color: white;
+    font-weight: bold;
+
+    padding: 30px;
+    margin-bottom: 10px;
+    margin-top: 7px;
+
+    border-bottom: 1px solid #ccc;
+
+    display: block; /* instead of the default 'bullet point' type of <li/> */
+}
+
+a {
+    color: #FFF; /* Selektor to change the appearance of <Link/> as it's getting transpiled to <a/> */
+    text-decoration: none;
+}
+
+#collapse-menu-button {
+    height:40px;
+    width:40px;
+
+    background: #9e370b;
+
+    padding: 10px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#collapse-menu-button:hover {
+    border-color: rgba(23, 23, 23, 0.87);
+    filter: drop-shadow(0 0 0.5em #ababaa);
+}
