@@ -2,6 +2,10 @@
     margin: 60px auto;
 }
 
+.image-div {
+    margin-bottom: 40px;
+}
+
 #location-pin {
     margin: 5px;
     z-index: 5;

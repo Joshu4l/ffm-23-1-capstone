@@ -2,7 +2,7 @@ import "./IntroductionBox.css"
 
 export default function IntroductionBox () {
    return(
-       <p id="introductionBox">
+       <p className="introductionBox">
            <p>Welcome to GroupsetHero - your assistant for equipping your road bike with the optimal groupset!
            We want to help you ensure you're always pedaling with ease, considering the terrain and elevation levels of your environment. :)</p>
 

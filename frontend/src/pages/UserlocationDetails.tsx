@@ -72,7 +72,7 @@ export default function UserlocationDetails() {
                     <br/><br/>
 
                 <div>
-                    <button id="edit-userlocation-button">Edit this userlocation</button>
+                    <button id="edit-userlocation-button" type="button">Edit this userlocation</button>
                     <button>Get my groupset recommendations!</button>
                 </div>
             </form>
