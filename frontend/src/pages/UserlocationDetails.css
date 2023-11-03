@@ -3,24 +3,35 @@
     flex-direction: column;
     width: 50vw;
     justify-content: center;
-    margin: 0 auto;
+    padding: 30px;
+    margin: 20px auto 15px;
+    border: 2px solid white;
+    border-radius: 18px;
 }
 
 #display-of-resulting-id-and-user {
-    margin: 50px;
+    margin-top: 20px;
+    margin-bottom: 30px;
     color: #213547;
     font-weight: bold;
 }
 
+#spread-map-img {
+    margin: 12px;
+    height: auto;
+    max-width: 200px;
+    max-height: 200px;
+}
+
 #elevation-information {
-    border: 1px solid #757574;
+
     border-radius: 15px;
     align-self: center;
 }
 
 #elevation-information:hover {
     border-color: rgba(45, 43, 43, 0.87);
-    filter: drop-shadow(0 0 1em #757574);
+
 }
 
 #calculated-average-elevation {
@@ -47,3 +58,19 @@ button:hover {
     border-color: rgba(45, 43, 43, 0.87);
     filter: drop-shadow(0 0 1em #757574);
 }
+
+
+#delete-userlocation-button {
+
+    background: #9e370b;
+
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#delete-userlocation-button:hover {
+    border-color: rgba(23, 23, 23, 0.87);
+    filter: drop-shadow(0 0 0.5em #ababaa);
+}
+

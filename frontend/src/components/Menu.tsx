@@ -11,11 +11,11 @@ export default function Menu({ isOpen, closeMenu }: MenuProps) {
         <div className={`menu ${isOpen ? "open" : ""}`}>
 
             <p className="navigation-option">
-                    <Link to={"/"}>Home</Link>
+                    <Link to={"/"}>Home / Getting started</Link>
             </p>
 
             <p className="navigation-option">
-                    <Link to={"/"}>Option 2</Link>
+                    <Link to={"/userlocations"}>Userlocation Gallery</Link>
             </p>
 
             <p className="navigation-option">

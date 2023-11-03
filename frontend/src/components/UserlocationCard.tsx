@@ -1,4 +1,7 @@
 import {Userlocation} from "./Entities.ts";
+import "./UserlocationCard.css"
+import locationPinWithRadius from "../assets/location-pin-with-radius.png"
+import {Link} from "react-router-dom";
 
 type UserlocationCardProps = {
     userlocation: Userlocation
@@ -7,51 +10,44 @@ type UserlocationCardProps = {
 export default function UserlocationCard (props: UserlocationCardProps) {
 
     return (
-        <div id="edit-container">
+        <div className="container">
 
-            These are the credentials of your individual location.
-            Based on the information you're providing below, we are aiming to recommend the perfect groupset for your road bike.
+            <Link to={`/userlocations/${props.userlocation.id}`} className="userlocation-card">
 
-            <form>
-                <p>{props.userlocation.id}</p>
-                <div className="label-input">
-                    <label>area designation</label>
-                    <input type="string"
-                           value={props.userlocation.areaDesignation}
-                           style={{ width: '18px' }}
-                    />
-                </div><br/>
+                <img id="location-pin-with-radius" src={locationPinWithRadius} alt="location-img" />
 
-
-                <div className="label-input">
-                    <label>latitude</label>
-                    <input type="number"
-                           value={props.userlocation.latitude.toFixed(4)}
-                    />
+                <div className="userlocation-properties-div">
+                    <div className="userlocation-attribute-div">
+                        <span className="attribute-label">ID:</span>
+                        <span className="attribute-value">{props.userlocation.id}</span>
+                    </div>
+                    <div className="userlocation-attribute-div">
+                        <span className="attribute-label">Designation :</span>
+                        <span className="attribute-value">{props.userlocation.areaDesignation}</span>
+                    </div>
+                    <div className="userlocation-attribute-div">
+                        <span className="attribute-label">User:</span>
+                        <span className="attribute-value">{props.userlocation.userName}</span>
+                    </div>
+                    <div className="userlocation-attribute-div">
+                        <span className="attribute-label">Latitude:</span>
+                        <span className="attribute-value">{props.userlocation.latitude.toFixed(4)}</span>
+                    </div>
+                    <div className="userlocation-attribute-div">
+                        <span className="attribute-label">Longitude:</span>
+                        <span className="attribute-value">{props.userlocation.longitude.toFixed(4)}</span>
+                    </div>
+                    <div className="userlocation-attribute-div">
+                        <span className="attribute-label">Radius in km:</span>
+                        <span className="attribute-value">{props.userlocation.radiusInKm}</span>
+                    </div>
+                    <div className="userlocation-attribute-div">
+                        <span className="attribute-label">Average elevation in %:</span>
+                        <span className="attribute-value">{props.userlocation.averageElevationInPercent.toFixed(2)}</span>
+                    </div>
                 </div>
 
-                <div className="label-input">
-                    <label>longitude</label>
-                    <input type="number"
-                           value={props.userlocation.longitude.toFixed(4)}
-                    />
-                </div>
-
-                <div className="label-input">
-                    <label>radius in km</label>
-                    <input type="number"
-                           value={props.userlocation.radiusInKm}
-                    />
-                </div><br/>
-
-
-                <div id="elevation-information">
-                    <p><strong>Average elevation of your area in percent:</strong></p>
-                    <p id="calculated-average-elevation"><strong>{props.userlocation.averageElevationInPercent.toFixed(2)}</strong></p>
-                </div>
-
-                <button>Save and update this location</button>
-            </form>
+            </Link>
 
         </div>
     )

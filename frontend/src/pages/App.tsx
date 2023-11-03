@@ -1,23 +1,51 @@
 import './App.css';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import Home from './Home.tsx';
-import UserlocationForm from './UserlocationForm.tsx';
+import {useState, useEffect} from "react";
+import {Userlocation} from "../components/Entities.ts";
 import Header from '../components/Header.tsx';
 import Footer from '../components/Footer.tsx';
+import Home from './Home.tsx';
 import useGeolocation from "../custom-hooks/useGeolocation.tsx";
+import UserlocationForm from './UserlocationForm.tsx';
 import UserlocationDetails from "./UserlocationDetails.tsx";
+import axios from "axios";
+import UserlocationGallery from "./UserlocationGallery.tsx";
+
+
 
 export default function App() {
+
     // CUSTOM HOOK & STATE
     const { location, determineGeolocation } = useGeolocation();
+    const [userlocations, setUserlocations] = useState<Userlocation[]>([])
 
     // AXIOS
+    function fetchUserlocationData() {
+        axios.get("/api/userlocations")
+            .then(response => {
+                setUserlocations(response.data)
+            })
+            .catch(reason => {
+                console.error(reason)
+            })
+    }
+
+
+    // RENDER BEHAVIOUR
+    useEffect(() => {
+        fetchUserlocationData();
+    }, []);
+
+
 
     return (
         <div className="app-container">
+
             <Header />
+
             <div className="app-content">
                 <Routes>
+
                     <Route
                         path="/"
                         element={<Home
@@ -34,14 +62,27 @@ export default function App() {
                         />}
                     />
 
-                    <Route path="/userlocations/:id" element={<UserlocationDetails />} />
+                    <Route
+                        path="/userlocations/:id"
+                        element={<UserlocationDetails
+                        />}
+                    />
+
+                    <Route
+                        path="/userlocations"
+                        element={<UserlocationGallery
+                            userlocations={userlocations}
+                        />}
+                    />
 
                     <Route
                         path="/*"
                         element={<Navigate to="/" />}
                     />
+
                 </Routes>
             </div>
+
             <Footer />
         </div>
     );

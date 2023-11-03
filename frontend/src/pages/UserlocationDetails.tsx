@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom";
-import "./UserlocationDetails.css"
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { Userlocation } from "../components/Entities.ts";
+import "./UserlocationDetails.css"
+import spreadMap from "../assets/spread-map.png"
+import axios from "axios";
 
 export default function UserlocationDetails() {
 
@@ -32,8 +33,7 @@ export default function UserlocationDetails() {
 
             <form>
                 <p id="display-of-resulting-id-and-user">
-                    Userlocation id:  {userlocation?.id}
-                <br/>
+                    <h3>Userlocation id:  {userlocation?.id}</h3>
                     Belonging to user: {userlocation?.userName}
                 </p>
 
@@ -64,16 +64,19 @@ export default function UserlocationDetails() {
                     <input type="number" value={userlocation?.radiusInKm} />
                 </div><br/>
 
+
+                <img id="spread-map-img" src={spreadMap} alt="spread-map"/>
+
+
                 <div id="elevation-information">
-                    <p><strong>Average elevation of your area in percent:</strong></p>
+                    <p><strong>Calculated average elevation of your area in percent:</strong></p>
                     <p id="calculated-average-elevation"><strong>{userlocation?.averageElevationInPercent.toFixed(2)}</strong></p>
                 </div>
 
-                    <br/><br/>
-
                 <div>
-                    <button id="edit-userlocation-button" type="button">Edit this userlocation</button>
-                    <button>Get my groupset recommendations!</button>
+                    <button id="delete-userlocation-button">&#xd7; Delete this userlocation</button>
+                    <button id="edit-userlocation-button" type="button">&#65039; Edit this userlocation</button>
+                    <button>Get your groupset recommendations!</button>
                 </div>
             </form>
 
