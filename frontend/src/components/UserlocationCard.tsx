@@ -1,6 +1,7 @@
 import {Userlocation} from "./Entities.ts";
 import "./UserlocationCard.css"
-import locationPinWithRadius from "../assets/location-pin-with-radius.png"
+
+import spreadMap from "../assets/spread-map.png"
 import {Link} from "react-router-dom";
 
 type UserlocationCardProps = {
@@ -14,7 +15,7 @@ export default function UserlocationCard (props: UserlocationCardProps) {
 
             <Link to={`/userlocations/${props.userlocation.id}`} className="userlocation-card">
 
-                <img id="location-pin-with-radius" src={locationPinWithRadius} alt="location-img" />
+                <img id="spread-map" src={spreadMap} alt="location-img" />
 
                 <div className="userlocation-properties-div">
                     <div className="userlocation-attribute-div">

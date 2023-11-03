@@ -47,7 +47,7 @@ export default function UserlocationDetails() {
                 <div className="label-input">
                     <label>area designation</label>
                     <input type="text" value={userlocation?.areaDesignation} style={{ width: '18px' }} />
-                </div><br/>
+                </div>
 
                 <div className="label-input">
                     <label>latitude</label>
@@ -74,9 +74,11 @@ export default function UserlocationDetails() {
                 </div>
 
                 <div>
-                    <button id="delete-userlocation-button">&#xd7; Delete this userlocation</button>
-                    <button id="edit-userlocation-button" type="button">&#65039; Edit this userlocation</button>
-                    <button>Get your groupset recommendations!</button>
+                    <button id="delete-userlocation-button"> &#xd7; Delete this location</button>
+                    <button id="edit-userlocation-button" type="button">
+                        <span role="img" aria-label="Edit this userlocation"> ✏️ </span> Edit this userlocation
+                    </button>
+                    <button id="get-recommendations-button"> &#x1F6B4; Get groupset recommendations! </button>
                 </div>
             </form>
 
