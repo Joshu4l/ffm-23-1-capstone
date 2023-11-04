@@ -1,49 +1,91 @@
 #edit-container {
+    background: linear-gradient(#efe2cf, #d7c9ae);
     display: flex;
     flex-direction: column;
-    width: 50vw;
-    justify-content: center;
-    margin: 0 auto;
+    width: 40vw;
+    justify-content: space-evenly;
+    padding: 18px 40px;
+    margin: 20px auto 15px;
+    border: 3px solid #757574;
+    border-radius: 18px;
 }
 
 #display-of-resulting-id-and-user {
-    margin: 50px;
+    margin-top: 6px;
+    margin-bottom: 30px;
     color: #213547;
     font-weight: bold;
 }
 
+#spread-map-img {
+    margin: 12px;
+    height: auto;
+    max-width: 200px;
+    max-height: 200px;
+}
+
 #elevation-information {
-    border: 1px solid #757574;
+
     border-radius: 15px;
     align-self: center;
 }
 
 #elevation-information:hover {
     border-color: rgba(45, 43, 43, 0.87);
-    filter: drop-shadow(0 0 1em #757574);
-}
 
+}
 #calculated-average-elevation {
     color: green;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 5px;
 }
 
-button {
+#delete-userlocation-button {
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
 
-    border-radius: 10px;
-    background-color: #a4a028;
-
     border: 1px solid transparent;
+    border-radius: 10px;
+
+    background-color: #9e370b;
+    color: white;
 
     padding: 0.6em 1.2em;
-    margin: 5px;
+    margin: 7px;
 
     cursor: pointer;
     transition: border-color 1s;
 }
-button:hover {
-    border-color: rgba(45, 43, 43, 0.87);
-    filter: drop-shadow(0 0 1em #757574);
+#edit-userlocation-button {
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background-color: #656361;
+    color: #f6f6f6;
+
+    padding: 0.6em 1.2em;
+    margin: 7px;
+
+    cursor: pointer;
+    transition: border-color 1s;
+}
+#get-recommendations-button {
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background-color: #a4a028;
+
+    padding: 0.6em 1.2em;
+    margin: 7px;
+
+    cursor: pointer;
+    transition: border-color 1s;
 }

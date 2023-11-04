@@ -58,3 +58,19 @@ input {
     margin: 0 auto;
     width: 31vw;
 }
+
+.standard-form-button {
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background-color: #a4a028;
+
+    padding: 0.6em 1.2em;
+    margin: 7px;
+
+    cursor: pointer;
+    transition: border-color 1s;
+}

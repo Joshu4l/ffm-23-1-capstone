@@ -20,7 +20,7 @@
 .burger-menu-button {
     all: unset;
     height: 36px;
-    width: 36px;
+    width: 75px;
     cursor: pointer;
     display: flex;
     align-items: center;

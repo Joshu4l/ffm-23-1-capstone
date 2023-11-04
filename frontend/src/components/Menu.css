@@ -46,17 +46,18 @@ a {
     width:40px;
 
     background: #9e370b;
+    color: white;
+    border: 1px solid transparent;
+    border-radius: 10px;
 
     padding: 10px;
     margin-top: 50px;
     margin-bottom: 20px;
 
-    color: white;
-    border: none;
     cursor: pointer;
+    transition: border-color 1s;
 }
 
 #collapse-menu-button:hover {
-    border-color: rgba(23, 23, 23, 0.87);
     filter: drop-shadow(0 0 0.5em #ababaa);
 }

@@ -50,7 +50,7 @@ export default function Home(props: HomeProps) {
                     </p>
                     <br/><br/>
 
-                    <button onClick={() => navigate("/userlocations/create")} >
+                    <button className="standard-form-button" onClick={() => navigate("/userlocations/create")} >
                         Submit to configure my user location &rarr;
                     </button>
 
@@ -66,7 +66,7 @@ export default function Home(props: HomeProps) {
                     </div>
                     <br/><br/>
 
-                    <button onClick={props.determineGeolocation}>Start determining my current location &#x1F4CC;</button>
+                    <button className="standard-form-button" onClick={props.determineGeolocation}>Start determining my current location &#x1F4CC;</button>
                 </>
 
                 )

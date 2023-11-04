@@ -115,7 +115,7 @@ export default function UserlocationForm(props: UserlocationProps) {
                 </div>
                 <br/>
 
-                <button>Finish and create this user location</button>
+                <button id="finish-and-create-button">Finish and create this user location</button>
             </form>
 
         </div>
