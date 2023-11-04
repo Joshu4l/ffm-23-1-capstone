@@ -1,5 +1,5 @@
 import './App.css';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import {Navigate, Route, Routes, useNavigate} from 'react-router-dom';
 import {useState, useEffect} from "react";
 import {Userlocation} from "../components/Entities.ts";
 import Header from '../components/Header.tsx';
@@ -17,6 +17,8 @@ export default function App() {
     // CUSTOM HOOK & STATE
     const { location, determineGeolocation } = useGeolocation();
     const [userlocations, setUserlocations] = useState<Userlocation[]>([])
+    const navigate = useNavigate()
+
 
     // AXIOS
     function fetchUserlocationData() {
@@ -27,6 +29,19 @@ export default function App() {
             .catch(reason => {
                 console.error(reason)
             })
+    }
+
+    function deleteUserlocationById(id: string) {
+        axios.delete(`/api/userlocations/${id}`)
+            .then(() => {
+                navigate("/userlocations")
+            })
+            /*            .then(() => {
+                            fetchMovieData()
+                        })*/
+            .catch(
+                (reason) => {console.log(reason)}
+            )
     }
 
 
@@ -63,6 +78,7 @@ export default function App() {
                     <Route
                         path="/userlocations/:id"
                         element={<UserlocationDetails
+                            deleteFunction={deleteUserlocationById}
                         />}
                     />
 
