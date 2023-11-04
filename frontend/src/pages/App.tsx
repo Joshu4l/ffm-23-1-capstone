@@ -34,11 +34,16 @@ export default function App() {
                         />}
                     />
 
-                    <Route path="/userlocations/:id" element={<UserlocationDetails />} />
+                    <Route
+                        path="/userlocations/:id"
+                        element={<UserlocationDetails
+                        />}
+                    />
 
                     <Route
                         path="/*"
-                        element={<Navigate to="/" />}
+                        element={<Navigate to="/"
+                        />}
                     />
                 </Routes>
             </div>
