@@ -80,7 +80,7 @@ export default function UserlocationDetails(props: UserlocationDetailsProps) {
                 </div>
 
                 <div>
-                    <button id="delete-userlocation-button" onClick={() => props.deleteFunction(userlocation?.id)}>
+                    <button id="delete-userlocation-button" onClick={() => props.deleteFunction(userlocation!.id)}>
                         &#xd7; Delete this location
                     </button>
 
