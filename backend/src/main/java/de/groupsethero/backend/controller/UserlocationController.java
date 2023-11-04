@@ -35,4 +35,10 @@ public class UserlocationController {
         return userlocationService.getUserlocationById(id);
     }
 
+    @DeleteMapping("/userlocations/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public String deleteUserlocationById (@PathVariable String id) {
+        return userlocationService.deleteUserlocationById(id);
+    }
+
 }
