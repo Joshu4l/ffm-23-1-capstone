@@ -1,0 +1,63 @@
+.container {
+    display: flex;
+    justify-content: space-around; /* Horizontal zentrieren */
+    align-items: center; /* Vertikal zentrieren (optional) */
+    margin: 23px;
+
+}
+
+.userlocation-card {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    align-items: center;
+    padding: 20px;
+
+    width: 40vw;
+    /*justify-content: center;*/
+    justify-content: space-evenly;
+
+    border: 1px solid #213547;
+    border-radius: 25px;
+    background-color: white;
+    color: #213547;
+}
+
+.userlocation-card:hover {
+    transform: scale(1.1);
+    border: 2px solid white;
+    filter: drop-shadow(0 0 1em #757574);
+    cursor: pointer;
+}
+
+
+#spread-map {
+    height: 110px;
+    width: 218px;
+    border-radius: 10px;
+    background-color: white;
+    margin-left: 1px;
+    margin-right: 15px;
+}
+
+.userlocation-properties-div {
+    width: 70%
+}
+
+.userlocation-attribute-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /*margin-left: 20px;*/
+
+}
+
+.attribute-label {
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.attribute-value {
+    align-self: end;
+    margin-right: 15px;
+}
