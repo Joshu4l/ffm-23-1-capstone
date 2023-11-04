@@ -17,6 +17,8 @@ public class UserlocationService {
     private final UserlocationRepo userlocationRepo;
     private final GeolocationService geolocationService;
 
+
+    // CREATE
     public Userlocation createUserlocation(UserlocationDTO userlocationDTO) throws RadiusInKmTooSmallException {
 
         List<Double> queryBoundaries = geolocationService.defineQueryBoundaries(userlocationDTO);
@@ -43,11 +45,27 @@ public class UserlocationService {
         return userlocationRepo.save(newUserlocation);
     }
 
+
+    // GET ALL
     public List<Userlocation> getAllUserlocations() {
         return userlocationRepo.findAll();
     }
 
+
+    // GET BY ID
     public Userlocation getUserlocationById(String id) throws NoSuchElementException {
         return userlocationRepo.findById(id).orElseThrow();
     }
+
+
+    // DELETE BY ID
+    public String deleteUserlocationById(String id) throws NoSuchElementException{
+        if (userlocationRepo.existsById(id)) {
+            userlocationRepo.deleteById(id);
+            return "userlocation with id " + id + " successfully deleted.";
+        } else {
+            throw new NoSuchElementException("Non-existent id");
+        }
+    }
+
 }

@@ -5,17 +5,15 @@ import "./UserlocationDetails.css"
 import spreadMap from "../assets/spread-map.png"
 import axios from "axios";
 
-export default function UserlocationDetails() {
+
+type UserlocationDetailsProps = {
+    deleteFunction: (id: string) => void
+}
+
+export default function UserlocationDetails(props: UserlocationDetailsProps) {
 
     const { id } = useParams();
     const [userlocation, setUserlocation] = useState<Userlocation>();
-
-
-    useEffect(() => {
-        if (id) {
-            fetchUserlocationDataById(id)
-        }
-    }, [id]); // Ensuring the request is sent again once the id changes
 
 
     function fetchUserlocationDataById(id: string) {
@@ -27,6 +25,14 @@ export default function UserlocationDetails() {
                 console.error(reason);
             });
     }
+
+
+    useEffect(() => {
+        if (id) {
+            fetchUserlocationDataById(id)
+        }
+    }, [id]); // Ensuring the request is sent again once the id changes
+
 
     return (
         <div id="edit-container">
@@ -74,11 +80,19 @@ export default function UserlocationDetails() {
                 </div>
 
                 <div>
-                    <button id="delete-userlocation-button"> &#xd7; Delete this location</button>
-                    <button id="edit-userlocation-button" type="button">
-                        <span role="img" aria-label="Edit this userlocation"> ✏️ </span> Edit this userlocation
+                    <button id="delete-userlocation-button" onClick={() => props.deleteFunction(userlocation!.id)}>
+                        &#xd7; Delete this location
                     </button>
-                    <button id="get-recommendations-button"> &#x1F6B4; Get groupset recommendations! </button>
+
+                    <button id="edit-userlocation-button" type="button">
+                        <span role="img" aria-label="Edit this userlocation">
+                        ✏️
+                        </span> Edit this userlocation
+                    </button>
+
+                    <button id="get-recommendations-button">
+                        &#x1F6B4; Get groupset recommendations!
+                    </button>
                 </div>
             </form>
 

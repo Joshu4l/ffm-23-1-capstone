@@ -206,4 +206,57 @@ class UserlocationControllerIntegrationTest {
 
     }
 
+
+    // DELETE BY ID
+    @Test
+    @DirtiesContext
+    void deleteUserlocationById_givenValidId_expectDeleteSuccessMessage() throws Exception {
+
+        // GIVEN
+        String validId = "1234";
+        Userlocation singleEntry = new Userlocation(
+                "1234",
+                53.56542916701823,
+                9.952696889811424,
+                50,
+                "my area",
+                "josh",
+                0.31170052270624937
+        );
+        userlocationRepo.save(singleEntry);
+
+        // WHEN
+        mockMvc.perform(MockMvcRequestBuilders.delete("/api/userlocations/" + validId))
+                // THEN
+                .andExpect(status().isNoContent())
+                .andExpect(MockMvcResultMatchers.content().string(
+                    "userlocation with id 1234 successfully deleted."
+                ));
+    }
+
+    @Test
+    @DirtiesContext
+    void deleteUserlocationById_givenInvalidId_expectNoSuchElementException() throws Exception {
+        // GIVEN
+        String invalidId = "quatschId";
+        Userlocation singleEntry = new Userlocation(
+                "1234",
+                53.56542916701823,
+                9.952696889811424,
+                50,
+                "my area",
+                "josh",
+                0.31170052270624937
+        );
+        userlocationRepo.save(singleEntry);
+
+        // WHEN
+        mockMvc.perform(MockMvcRequestBuilders.delete("/api/userlocations/" + invalidId))
+            // THEN
+            .andExpect(status().isNotFound())
+            .andExpect(MockMvcResultMatchers.content().string(
+                "Nothing here - The location specified doesn't seem to exist"
+            ));
+    }
+
 }

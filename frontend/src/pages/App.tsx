@@ -10,9 +10,8 @@ import UserlocationForm from './UserlocationForm.tsx';
 import UserlocationDetails from "./UserlocationDetails.tsx";
 import axios from "axios";
 import UserlocationGallery from "./UserlocationGallery.tsx";
-
-
-
+  
+  
 export default function App() {
 
     // CUSTOM HOOK & STATE
@@ -37,7 +36,6 @@ export default function App() {
     }, []);
 
 
-
     return (
         <div className="app-container">
 
@@ -49,16 +47,16 @@ export default function App() {
                     <Route
                         path="/"
                         element={<Home
-                            location={location}
-                            determineGeolocation={determineGeolocation}
+                                    location={location}
+                                    determineGeolocation={determineGeolocation}
                         />}
                     />
 
                     <Route
                         path="/userlocations/create"
                         element={<UserlocationForm
-                            latitude={location.coordinates.lat}
-                            longitude={location.coordinates?.lng}
+                                    latitude={location.coordinates.lat}
+                                    longitude={location.coordinates?.lng}
                         />}
                     />
 
@@ -77,7 +75,8 @@ export default function App() {
 
                     <Route
                         path="/*"
-                        element={<Navigate to="/" />}
+                        element={<Navigate to="/"
+                        />}
                     />
 
                 </Routes>

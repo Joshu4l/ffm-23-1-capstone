@@ -162,4 +162,32 @@ class UserlocationServiceUnitTest {
 
     }
 
+
+    // DELETE BY ID
+    @Test
+    void deleteUserlocationById_givenValidId_expectSuccessfullyDeletedString() throws NoSuchElementException {
+        // GIVEN
+        String validId = "1234";
+        when(userlocationRepo.existsById(validId)).thenReturn(true);
+
+        // WHEN
+        String actual = userlocationService.deleteUserlocationById(validId);
+
+        // THEN
+        String expected = "userlocation with id 1234 successfully deleted.";
+        verify(userlocationRepo, times(1)).deleteById(validId);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void deleteUserlocationById_givenInvalidId_expectNoSuchElementException() throws NoSuchElementException {
+        // GIVEN
+        String invalidId = "quatschId";
+        when(userlocationRepo.existsById(invalidId))
+        .thenReturn(false);
+
+        // THEN
+        verify(userlocationRepo, never()).deleteById(invalidId);
+        assertThrows(NoSuchElementException.class, () -> userlocationService.deleteUserlocationById(invalidId));
+    }
 }
