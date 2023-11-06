@@ -41,4 +41,10 @@ public class UserlocationController {
         return userlocationService.deleteUserlocationById(id);
     }
 
+    @PutMapping("/userlocations/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Userlocation updateUserlocationById (@PathVariable String id, @RequestBody Userlocation userlocation) {
+        return userlocationService.updateUserlocationById(id, userlocation);
+    }
+
 }

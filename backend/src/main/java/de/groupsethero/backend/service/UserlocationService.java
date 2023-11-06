@@ -68,4 +68,19 @@ public class UserlocationService {
         }
     }
 
+
+    // UPDATE BY ID
+    public Userlocation updateUserlocationById(String id, Userlocation userlocation) throws NoSuchElementException {
+
+        Userlocation updatedUserlocation = new Userlocation(
+                id, // make use of the already existing identifier and only update the remaining attributes below
+                userlocation.getLatitude(),
+                userlocation.getLongitude(),
+                userlocation.getRadiusInKm(),
+                userlocation.getAreaDesignation(),
+                userlocation.getUserName(),
+                userlocation.getAverageElevationInPercent()
+        );
+        return userlocationRepo.save(updatedUserlocation);
+    }
 }
