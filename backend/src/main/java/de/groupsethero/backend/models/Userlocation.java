@@ -19,5 +19,4 @@ public class Userlocation {
     private String userName;
     
     private double averageElevationInPercent; // additional information in comparison to UserlocationDTO
-
 }
