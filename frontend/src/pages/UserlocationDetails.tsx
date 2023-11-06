@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Userlocation } from "../components/Entities.ts";
 import "./UserlocationDetails.css"
@@ -6,14 +6,11 @@ import spreadMap from "../assets/spread-map.png"
 import axios from "axios";
 
 
-type UserlocationDetailsProps = {
-    deleteFunction: (id: string) => void
-}
-
-export default function UserlocationDetails(props: UserlocationDetailsProps) {
+export default function UserlocationDetails() {
 
     const { id } = useParams();
     const [userlocation, setUserlocation] = useState<Userlocation>();
+    const navigate = useNavigate()
 
 
     function fetchUserlocationDataById(id: string) {
@@ -27,11 +24,27 @@ export default function UserlocationDetails(props: UserlocationDetailsProps) {
     }
 
 
+    function deleteUserlocationById(id: string) {
+        axios.delete(`/api/userlocations/${id}`)
+            .then(() => {
+                navigate("/userlocations")
+            })
+            /*            .then(() => {
+                            fetchMovieData()
+                        })*/
+            .catch(
+                (reason) => {console.log(reason)}
+            )
+    }
+
+
     useEffect(() => {
         if (id) {
             fetchUserlocationDataById(id)
         }
     }, [id]); // Ensuring the request is sent again once the id changes
+
+
 
 
     return (
@@ -80,9 +93,26 @@ export default function UserlocationDetails(props: UserlocationDetailsProps) {
                 </div>
 
                 <div>
-                    <button id="delete-userlocation-button" onClick={() => props.deleteFunction(userlocation!.id)}>
+{/*                    <button id="delete-userlocation-button" type="button">
+                        &#xd7; Delete this location
+                        <Link to={"/userlocations"} onClick={() => props.deleteFunction(userlocation!.id)}>
+                            Userlocation Gallery
+                        </Link>
+                    </button>*/}
+
+
+                    <button
+                        id="delete-userlocation-button"
+                        type="button"
+                        onClick={() => {
+                            deleteUserlocationById(userlocation!.id);
+                            // Führen Sie die Navigation zur Userlocation Gallery durch
+                            navigate('/userlocations');
+                        }}
+                    >
                         &#xd7; Delete this location
                     </button>
+
 
                     <button id="edit-userlocation-button" type="button">
                         <span role="img" aria-label="Edit this userlocation">

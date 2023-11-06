@@ -1,5 +1,13 @@
-.returnContainer {
+.app-container {
   justify-content: space-between;
+  /*ab hier eingefügt*/
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Mindesthöhe des Viewports */
+}
+
+.app-content {
+  flex-grow: 1;
 }
 
 .introductionBox {
@@ -19,4 +27,8 @@
   height: auto;
   max-width: 200px;
   max-height: 250px;
+}
+
+.footer-component {
+  text-align: center;
 }
