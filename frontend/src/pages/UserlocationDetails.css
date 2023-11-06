@@ -2,7 +2,7 @@
     background: linear-gradient(#efe2cf, #d7c9ae);
     display: flex;
     flex-direction: column;
-    width: 40vw;
+    width: 35vw;
     justify-content: space-evenly;
     padding: 18px 40px;
     margin: 20px auto 15px;
@@ -67,6 +67,21 @@
     border-radius: 10px;
     background-color: #656361;
     color: #f6f6f6;
+
+    padding: 0.6em 1.2em;
+    margin: 7px;
+
+    cursor: pointer;
+    transition: border-color 1s;
+}
+#save-userlocation-button {
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background-color: #a4a028;
 
     padding: 0.6em 1.2em;
     margin: 7px;

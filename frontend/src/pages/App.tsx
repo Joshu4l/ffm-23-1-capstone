@@ -41,8 +41,7 @@ export default function App() {
 
                     <Route
                         path="/userlocations/:id"
-                        element={<UserlocationDetails
-                        />}
+                        element={<UserlocationDetails/>}
                     />
 
                     <Route
@@ -52,8 +51,7 @@ export default function App() {
 
                     <Route
                         path="/*"
-                        element={<Navigate to="/"
-                        />}
+                        element={<Navigate to="/"/>}
                     />
 
                 </Routes>

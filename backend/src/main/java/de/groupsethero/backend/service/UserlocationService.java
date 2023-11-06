@@ -33,7 +33,6 @@ public class UserlocationService {
         );
 
         Userlocation newUserlocation = Userlocation.builder()
-
                 .latitude( userlocationDTO.getLatitude() )
                 .longitude( userlocationDTO.getLongitude() )
                 .radiusInKm( userlocationDTO.getRadiusInKm() )
@@ -41,7 +40,6 @@ public class UserlocationService {
                 .areaDesignation( userlocationDTO.getAreaDesignation() )
                 .userName( userlocationDTO.getUserName() )
                 .build();
-
         return userlocationRepo.save(newUserlocation);
     }
 
