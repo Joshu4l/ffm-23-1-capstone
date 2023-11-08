@@ -23,8 +23,8 @@ export default function Menu({ isOpen, closeMenu }: MenuProps) {
             </p>
 
             <p className="navigation-option">
-                    <Link to={"/"} onClick={closeMenu}>
-                        Option 3
+                    <Link to={"/recommendations"} onClick={closeMenu}>
+                        Recommendation Page
                     </Link>
             </p>
 

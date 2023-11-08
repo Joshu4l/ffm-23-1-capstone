@@ -7,6 +7,7 @@ import useGeolocation from "../custom-hooks/useGeolocation.tsx";
 import UserlocationForm from './UserlocationForm.tsx';
 import UserlocationDetails from "./UserlocationDetails.tsx";
 import UserlocationGallery from "./UserlocationGallery.tsx";
+import SliderPage from "./SliderPage.tsx";
   
   
 export default function App() {
@@ -53,6 +54,12 @@ export default function App() {
                         path="/*"
                         element={<Navigate to="/"/>}
                     />
+
+                    <Route
+                        path="/recommendations"
+                        element={<SliderPage/>}
+                    />
+
 
                 </Routes>
             </div>
