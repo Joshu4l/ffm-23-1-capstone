@@ -259,4 +259,55 @@ class UserlocationControllerIntegrationTest {
             ));
     }
 
+
+    // UPDATE BY ID
+    @Test
+    @DirtiesContext
+    void updateUserlocationById_givenValidIdAndBody_expectUpdatedUserlocationObject() throws Exception {
+        // GIVEN
+        geolocationRepo.save(new Geolocation(47.3, 6.1, 380.01));
+        geolocationRepo.save(new Geolocation(47.3, 6.11, 362.39));
+        geolocationRepo.save(new Geolocation(47.3, 6.12, 340.44));
+        geolocationRepo.save(new Geolocation(47.31, 6.1, 351.22));
+        geolocationRepo.save(new Geolocation(47.31, 6.11, 364.52));
+        geolocationRepo.save(new Geolocation(47.31, 6.12, 430.18));
+
+        String validId = "1234";
+        Userlocation prevUserlocation = new Userlocation("1234",
+                47.3,
+                6.11,
+                3,
+                "area 2",
+                "josh",
+                6330.767975035719
+        );
+        userlocationRepo.save(prevUserlocation);
+
+        mockMvc.perform(MockMvcRequestBuilders.put("/api/userlocations/" + validId)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                        {
+                            "latitude": 47.3,
+                            "longitude": 6.11,
+                            "radiusInKm": 2,
+                            "areaDesignation": "area 2 renamed",
+                            "userName": "josh"
+                        }
+                        """)
+                )
+                // THEN
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.content().json(
+                        """         
+                        {
+                            "latitude": 47.3,
+                            "longitude": 6.11,
+                            "radiusInKm": 2,
+                            "areaDesignation": "area 2 renamed",
+                            "userName": "josh",
+                            "averageElevationInPercent": 7596.823213198377
+                        }
+                        """)
+                );
+    }
 }

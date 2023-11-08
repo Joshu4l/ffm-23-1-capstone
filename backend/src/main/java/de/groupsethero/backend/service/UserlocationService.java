@@ -33,7 +33,6 @@ public class UserlocationService {
         );
 
         Userlocation newUserlocation = Userlocation.builder()
-
                 .latitude( userlocationDTO.getLatitude() )
                 .longitude( userlocationDTO.getLongitude() )
                 .radiusInKm( userlocationDTO.getRadiusInKm() )
@@ -41,7 +40,6 @@ public class UserlocationService {
                 .areaDesignation( userlocationDTO.getAreaDesignation() )
                 .userName( userlocationDTO.getUserName() )
                 .build();
-
         return userlocationRepo.save(newUserlocation);
     }
 
@@ -70,16 +68,29 @@ public class UserlocationService {
 
 
     // UPDATE BY ID
-    public Userlocation updateUserlocationById(String id, Userlocation userlocation) throws NoSuchElementException {
+    public Userlocation updateUserlocationById(String id, UserlocationDTO userlocationDTO) throws RadiusInKmTooSmallException {
 
+        // Re-Calculation of the average elevation in Percent
+        List<Double> queryBoundaries = geolocationService.defineQueryBoundaries(userlocationDTO);
+        List<Geolocation> databaseSubset = geolocationService.getGeolocationSubsetToBeQueried(
+                queryBoundaries.get(0),
+                queryBoundaries.get(1),
+                queryBoundaries.get(2),
+                queryBoundaries.get(3)
+        );
+        double calculatedAverageElevationInPercent = geolocationService.calculateAverageElevationInPercent(
+                databaseSubset
+        );
+
+        // Actually setting up the object to be saved:
         Userlocation updatedUserlocation = new Userlocation(
                 id, // make use of the already existing identifier and only update the remaining attributes below
-                userlocation.getLatitude(),
-                userlocation.getLongitude(),
-                userlocation.getRadiusInKm(),
-                userlocation.getAreaDesignation(),
-                userlocation.getUserName(),
-                userlocation.getAverageElevationInPercent()
+                userlocationDTO.getLatitude(),
+                userlocationDTO.getLongitude(),
+                userlocationDTO.getRadiusInKm(),
+                userlocationDTO.getAreaDesignation(),
+                userlocationDTO.getUserName(),
+                calculatedAverageElevationInPercent
         );
         return userlocationRepo.save(updatedUserlocation);
     }

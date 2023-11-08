@@ -69,7 +69,7 @@ export default function Home(props: HomeProps) {
                     <button className="standard-form-button" onClick={props.determineGeolocation}>Start determining my current location &#x1F4CC;</button>
                 </>
 
-                )
+            )
             }
         </div>
     );
