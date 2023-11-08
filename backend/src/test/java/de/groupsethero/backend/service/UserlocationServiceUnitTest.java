@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.Optional;
 
 class UserlocationServiceUnitTest {
@@ -189,5 +190,59 @@ class UserlocationServiceUnitTest {
         // THEN
         verify(userlocationRepo, never()).deleteById(invalidId);
         assertThrows(NoSuchElementException.class, () -> userlocationService.deleteUserlocationById(invalidId));
+    }
+
+    @Test
+    void updateUserlocationById_givenValidId_expectSuccessfullyUpdatedUserlocationObject() throws Exception {
+
+        // GIVEN
+        String validId = "1234";
+        when(geolocationService.defineQueryBoundaries(userlocationDTO)
+        ).thenReturn(List.of(47.3, 47.3, 6.11, 6.11));
+
+        when(geolocationService.getGeolocationSubsetToBeQueried(
+                anyDouble(), anyDouble(), anyDouble(), anyDouble())
+        ).thenReturn(List.of(new Geolocation(47.3, 6.11, 362.39)));
+
+        when(geolocationService.calculateAverageElevationInPercent(
+                anyList())
+        ).thenReturn(0.31170052270624937);
+
+        Userlocation updatedUserlocation = new Userlocation(
+                validId,
+                userlocationDTO.getLatitude(),
+                userlocationDTO.getLongitude(),
+                userlocationDTO.getRadiusInKm(),
+                userlocationDTO.getAreaDesignation(),
+                userlocationDTO.getUserName(),
+                0.31170052270624937
+        );
+        when(userlocationRepo.save(
+                any(Userlocation.class))
+        ).thenReturn(updatedUserlocation);
+
+        // WHEN
+        Userlocation actual = userlocationService.updateUserlocationById(validId, userlocationDTO);
+
+        // THEN
+        Userlocation expected = new Userlocation(
+                "1234",
+                47.3,
+                6.11,
+                0,
+                "area 51",
+                "josh",
+                0.31170052270624937
+        );
+        verify(userlocationRepo).save(argThat(userlocation ->
+                userlocation.getId().equals("1234") &&
+                userlocation.getLatitude() == 47.3 &&
+                userlocation.getLongitude() == 6.11 &&
+                userlocation.getRadiusInKm() == 0 &&
+                Objects.equals(userlocation.getAreaDesignation(), "area 51") &&
+                userlocation.getUserName().equals("josh")
+        ));
+
+        assertEquals(expected, actual);
     }
 }

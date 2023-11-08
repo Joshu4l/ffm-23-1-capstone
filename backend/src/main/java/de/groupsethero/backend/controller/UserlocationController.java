@@ -43,8 +43,8 @@ public class UserlocationController {
 
     @PutMapping("/userlocations/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Userlocation updateUserlocationById (@PathVariable String id, @RequestBody Userlocation userlocation) {
-        return userlocationService.updateUserlocationById(id, userlocation);
+    public Userlocation updateUserlocationById (@PathVariable String id, @RequestBody UserlocationDTO userlocationDTO) throws Exception {
+        return userlocationService.updateUserlocationById(id, userlocationDTO);
     }
 
 }

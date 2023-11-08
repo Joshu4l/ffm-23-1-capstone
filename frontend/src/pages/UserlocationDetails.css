@@ -74,6 +74,23 @@
     cursor: pointer;
     transition: border-color 1s;
 }
+#cancel-userlocation-update-button {
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+
+    border: 1px solid transparent;
+    border-radius: 10px;
+
+    background-color: #9e370b;
+    color: white;
+
+    padding: 0.6em 1.2em;
+    margin: 7px;
+
+    cursor: pointer;
+    transition: border-color 1s;
+}
 #save-userlocation-button {
     font-size: 1em;
     font-weight: 500;
@@ -104,3 +121,32 @@
     cursor: pointer;
     transition: border-color 1s;
 }
+
+/* Add this CSS code to your UserlocationDetails.css file */
+.label-input {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    width: 93%;
+}
+
+.label-input label {
+    margin-bottom: 5px;
+}
+
+/* Style the number input fields */
+.label-input input[type="number"] {
+    width: calc(100% - 2em); /* Adjust the width to accommodate the stepper buttons */
+    padding-right: 7px; /* Add some padding on the right side */
+    text-align: right; /* Align the text to the right */
+}
+
+/* Show and style the stepper buttons */
+.label-input input[type="number"]::-webkit-inner-spin-button,
+.label-input input[type="number"]::-webkit-outer-spin-button {
+    appearance: auto; /* Reset the appearance property to show the buttons */
+    opacity: 1; /* Make the buttons fully visible */
+    pointer-events: auto; /* Enable pointer events on the buttons */
+}
+
+

@@ -5,14 +5,15 @@ import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import InstructionBox from "../components/InstructionBox.tsx";
 
-export type UserlocationProps = {
+export type UserlocationFormProps = {
     latitude: number,
     longitude: number
 }
 
-export default function UserlocationForm(props: UserlocationProps) {
+export default function UserlocationForm(props: UserlocationFormProps) {
 
     const [userlocation, setUserlocation] = useState<UserlocationDTO | undefined>()
+
     const [latitude, setLatitude] = useState<number>(props.latitude)
     const [longitude, setLongitude] = useState<number>(props.longitude)
     const [radiusInKm, setRadiusInKm] = useState<number>()
@@ -46,15 +47,15 @@ export default function UserlocationForm(props: UserlocationProps) {
         event.preventDefault()
         // Send the POST request here
         axios.post("/api/userlocations",
-        {
+            {
                 ...userlocation,
                 latitude: latitude,
                 longitude: longitude,
                 radiusInKm: radiusInKm,
                 areaDesignation: areaDesignation,
                 userName: userName
-                }
-            )
+            }
+        )
             .then(response => {
                 console.log(response.data);
                 setUserlocation(response.data);
@@ -80,7 +81,7 @@ export default function UserlocationForm(props: UserlocationProps) {
                            maxLength={25}
                            onChange={changeLatitude}
                            required
-                           />
+                    />
                 </div>
                 <div className="label-input">
                     <label className="done"><strong>LNG. coordinate:</strong></label>
@@ -89,7 +90,7 @@ export default function UserlocationForm(props: UserlocationProps) {
                            maxLength={25}
                            onChange={changeLongitude}
                            required
-                           />
+                    />
                 </div>
                 <br/>
 
