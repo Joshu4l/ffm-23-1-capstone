@@ -2,13 +2,12 @@ import './App.css';
 import {Navigate, Route, Routes} from 'react-router-dom';
 import Header from '../components/Header.tsx';
 import Footer from '../components/Footer.tsx';
-import Home from './Home.tsx';
 import useGeolocation from "../custom-hooks/useGeolocation.tsx";
+import Home from './Home.tsx';
 import UserlocationForm from './UserlocationForm.tsx';
-import UserlocationDetails from "./UserlocationDetails.tsx";
 import UserlocationGallery from "./UserlocationGallery.tsx";
-import SliderPage from "./SliderPage.tsx";
-  
+import UserlocationDetails from "./UserlocationDetails.tsx";
+import GroupsetRecommendationsPage from "./GroupsetRecommendationPage.tsx";
   
 export default function App() {
 
@@ -55,11 +54,17 @@ export default function App() {
                         element={<Navigate to="/"/>}
                     />
 
-                    <Route
-                        path="/recommendations"
-                        element={<SliderPage/>}
-                    />
 
+         {/*           <Route
+                        path="/groupset-recommendations/:id"
+                        element={<GroupsetRecommendationsPage/>}
+                    />*/}
+
+                    <Route
+                        path="/groupset-recommendations/:id"
+                        element={<GroupsetRecommendationsPage/>
+                        }
+                    />
 
                 </Routes>
             </div>

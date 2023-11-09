@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 
+import java.util.List;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -13,6 +15,14 @@ public class Recommendation {
 
     @Id
     private String id;
-    private int cranksetCategoryValue;
-    private int wheelDiameterValue;
+    private String userlocationId;
+    private String areaDesignation;
+
+    private double averageElevationInPercent;
+    private String elevationInterpretation;
+
+    private List<Integer> cranksetDimensions;
+
+    private int smallestSprocket = 11;
+    private int largestSprocket;
 }

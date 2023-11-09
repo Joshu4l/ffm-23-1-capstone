@@ -15,3 +15,16 @@ export type Userlocation = {
     userName: string,
     averageElevationInPercent: number
 }
+
+export type GroupsetRecommendation = {
+
+    id: string,
+    userlocationId: string,
+    areaDesignation: string,
+    averageElevationInPercent: number,
+    elevationInterpretation: string,
+    cranksetDimensions: number[],
+    smallestSprocket: number,
+    largestSprocket: number
+
+}

@@ -18,6 +18,7 @@ export default function UserlocationDetails() {
     const [radiusInKm, setRadiusInKm] = useState<number>(0);
     const [areaDesignation, setAreaDesignation] = useState<string>("");
 
+
     const navigate = useNavigate();
 
     function changeAreaDesignation(event: ChangeEvent<HTMLInputElement>) {
@@ -92,6 +93,20 @@ export default function UserlocationDetails() {
             .catch((reason) => {
                 console.log(reason);
             });
+    }
+
+    function requestGroupsetRecommendations() {
+        axios
+            .post(`/api/recommendations/calculate`,
+                {
+                    userlocationId: id,
+                    averageElevationInPercent: userlocation?.averageElevationInPercent
+                }
+            )
+            .then((response) => {
+                const recommendationId = response.data.id
+                navigate(`/groupset-recommendations/${recommendationId}`)
+            })
     }
 
     useEffect(() => {
@@ -224,7 +239,11 @@ export default function UserlocationDetails() {
                             ✏️
                         </span> Edit this userlocation
                     </button>
-                    <button id="get-recommendations-button">
+                    <button id="get-recommendations-button" type="button"
+                        onClick={
+                            () => {requestGroupsetRecommendations()}
+                        }
+                    >
                         &#x1F6B4; Get groupset recommendations!
                     </button>
                 </div>
