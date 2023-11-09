@@ -1,0 +1,33 @@
+
+#display-of-recommendation-and-location-id {
+    margin-top: 3%;
+    margin-bottom: 30px;
+    color: #213547;
+    font-weight: bold;
+}
+
+.informative {
+    margin-right: 20%;
+    margin-left: 20%;
+}
+
+.recommendation-div {
+
+    border: 1px solid #656361;
+    border-radius: 15px;
+    background-color: #f6f6f6;
+
+    margin: auto;
+    padding: 10px;
+    max-width: 50%;
+}
+
+.recommendation-attribute-div {
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    max-width: 50vw;
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+}
