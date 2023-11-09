@@ -1,10 +1,8 @@
-// GroupsetRecommendationsPage.tsx
 import GroupsetRecommendationsComponent from "../components/GroupsetRecommendation.tsx";
 import {GroupsetRecommendation} from "../components/Entities.ts";
 import axios from "axios";
 import {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-
 
 
 export default function GroupsetRecommendationsPage() {

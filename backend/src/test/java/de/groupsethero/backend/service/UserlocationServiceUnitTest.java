@@ -1,5 +1,6 @@
 package de.groupsethero.backend.service;
 import de.groupsethero.backend.models.Geolocation;
+import de.groupsethero.backend.models.RecommendationRequestDTO;
 import de.groupsethero.backend.models.Userlocation;
 import de.groupsethero.backend.models.UserlocationDTO;
 import de.groupsethero.backend.repository.UserlocationRepo;
@@ -19,7 +20,6 @@ class UserlocationServiceUnitTest {
     UserlocationService userlocationService = new UserlocationService(userlocationRepo, geolocationService);
 
     UserlocationDTO userlocationDTO = new UserlocationDTO(47.3, 6.11, 0, "area 51", "josh");
-
 
     // CREATE
     @Test

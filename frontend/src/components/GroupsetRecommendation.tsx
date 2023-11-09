@@ -7,7 +7,7 @@ export default function GroupsetRecommendationsComponent({ groupsetRecommendatio
         <>
             <p id="display-of-recommendation-and-location-id">
                 <h3>Recommendation id:  {groupsetRecommendation.id}</h3>
-                Belonging to userlocation: {groupsetRecommendation.userlocationId} with designation {groupsetRecommendation.areaDesignation}
+                Belonging to userlocation: {groupsetRecommendation.userlocationId}
             </p>
             <p className="informative">
                 Below you can find our groupset recommendation considering the characteristics of the area you specified:

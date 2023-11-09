@@ -22,13 +22,6 @@ export default function Menu({ isOpen, closeMenu }: MenuProps) {
                     </Link>
             </p>
 
-            <p className="navigation-option">
-                    <Link to={"/recommendations"} onClick={closeMenu}>
-                        Recommendation Page
-                    </Link>
-            </p>
-
-
             <button id="collapse-menu-button" onClick={closeMenu}>
                 &#xd7;
             </button>
