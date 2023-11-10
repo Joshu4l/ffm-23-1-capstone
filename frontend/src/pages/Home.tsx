@@ -15,7 +15,6 @@ type HomeProps = {
 // FUNCTION
 export default function Home(props: HomeProps) {
 
-    // NAVIGATION HOOK
     const navigate = useNavigate();
 
     return (
@@ -62,11 +61,12 @@ export default function Home(props: HomeProps) {
                     <IntroductionBox/>
 
                     <div className="imageDiv">
-                        <img id="cyclist-gif" src={cyclistGif} alt="n.a." />
+                        <img id="cyclist-gif" src={cyclistGif} alt="n.a."/>
                     </div>
                     <br/><br/>
-
-                    <button className="standard-form-button" onClick={props.determineGeolocation}>Start determining my current location &#x1F4CC;</button>
+                    <button className="standard-form-button" onClick={props.determineGeolocation}>
+                        Start determining my current location &#x1F4CC;
+                    </button>
                 </>
 
             )

@@ -17,32 +17,45 @@ public class RecommendationService {
 
     public Recommendation calculateGroupsetRecommendation(String userlocationId, String areaDesignation, double averageElevationInPercent) {
 
-        Recommendation newRecommendation = Recommendation.builder()
-                .userlocationId(
-                        userlocationId
-                )
-                .areaDesignation(
-                        areaDesignation
-                )
-                .averageElevationInPercent(
-                        averageElevationInPercent
-                )
-                .elevationInterpretation(
-                        getElevationInterpretation(averageElevationInPercent)
-                )
-                .cranksetDimensions(
-                        getCranksetDimensionsRecommendation(averageElevationInPercent)
-                )
-                .smallestSprocket(
-                        11
-                )
-                .largestSprocket(
-                        getLargestSprocketRecommendation(averageElevationInPercent)
-                )
-                .build();
-        return recommendationRepo.save(newRecommendation);
+        if ( findExistingRecommendation(userlocationId, areaDesignation, averageElevationInPercent) != null ) {
+            return findExistingRecommendation(userlocationId, areaDesignation, averageElevationInPercent);
+
+        } else {
+            Recommendation newRecommendation = Recommendation.builder()
+                    .userlocationId(
+                            userlocationId
+                    )
+                    .areaDesignation(
+                            areaDesignation
+                    )
+                    .averageElevationInPercent(
+                            averageElevationInPercent
+                    )
+                    .elevationInterpretation(
+                            getElevationInterpretation(averageElevationInPercent)
+                    )
+                    .cranksetDimensions(
+                            getCranksetDimensionsRecommendation(averageElevationInPercent)
+                    )
+                    .smallestSprocket(
+                            11
+                    )
+                    .largestSprocket(
+                            getLargestSprocketRecommendation(averageElevationInPercent)
+                    )
+                    .build();
+            return recommendationRepo.save(newRecommendation);
+        }
     }
 
+    private Recommendation findExistingRecommendation(String userlocationId, String areaDesignation, double averageElevationInPercent) {
+
+        return recommendationRepo.findByUserlocationIdAndAreaDesignationAndAverageElevationInPercent(
+                userlocationId,
+                areaDesignation,
+                averageElevationInPercent
+        ).orElse(null);
+    }
 
     public String getElevationInterpretation(double averageElevationInPercent) {
 
@@ -96,10 +109,8 @@ public class RecommendationService {
 
     }
 
-
     public Recommendation getGroupsetRecommendationById(String id) {
         return recommendationRepo.findById(id).orElseThrow();
     }
 
 }
-

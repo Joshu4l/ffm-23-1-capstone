@@ -11,6 +11,7 @@ export default function Header() {
     const [fontSize, setFontSize] = useState<number>(30);
     const [buttonSize, setButtonSize] = useState<number>(36); // Grundlegende Button-Größe
 
+
     // CALLBACKS
     const openMenu = () => {
         setIsMenuOpen(true);
@@ -22,22 +23,16 @@ export default function Header() {
 
     useEffect(() => {
         const handleResize = () => {
-            // Maximale Schriftgröße festlegen
-            const maxSize = 40; // Ändere dies entsprechend deinen Anforderungen
 
-            // Aktuelle Fensterbreite abrufen
+            const maxSize = 40;
             const windowWidth = window.innerWidth;
+/*            const newFontSize = Math.min((windowWidth / 1200) * 40, maxSize);
+            const newButtonSize = Math.min((windowWidth / 1200) * 60, 75); // Maximal 75px Breite*/
 
-            // Neue Schriftgröße berechnen
-            const newFontSize = Math.min((windowWidth / 1200) * 40, maxSize);
+            const newFontSize = Math.min((windowWidth / 1200) * 70, maxSize); // Increase the factor (e.g., from 40 to 50)
+            const newButtonSize = Math.min((windowWidth / 1200) * 95, 75); // Adjust as needed
 
-            // Neue Button-Größe berechnen
-            const newButtonSize = Math.min((windowWidth / 1200) * 60, 75); // Maximal 75px Breite
-
-            // Schriftgröße des h2-Elements aktualisieren
             setFontSize(newFontSize);
-
-            // Button-Größe aktualisieren
             setButtonSize(newButtonSize);
         };
 
