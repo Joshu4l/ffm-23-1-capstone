@@ -1,7 +1,5 @@
 import {Userlocation} from "./Entities.ts";
 import "./UserlocationCard.css"
-
-import spreadMap from "../assets/spread-map.png"
 import {Link} from "react-router-dom";
 
 type UserlocationCardProps = {
@@ -14,8 +12,6 @@ export default function UserlocationCard (props: UserlocationCardProps) {
         <div className="container">
 
             <Link to={`/userlocations/${props.userlocation.id}`} className="userlocation-card">
-
-                {/*<img id="spread-map" src={spreadMap} alt="location-img" />*/}
 
                 <div className="userlocation-properties-div">
                     <div className="userlocation-id-div">

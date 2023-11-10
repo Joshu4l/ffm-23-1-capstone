@@ -4,23 +4,29 @@ import "./GroupsetRecommendation.css"
 export default function GroupsetRecommendationsComponent({ groupsetRecommendation } : { groupsetRecommendation: GroupsetRecommendation }) {
 
     return (
-        <>
-            <p id="display-of-recommendation-and-location-id">
-                <h3>Recommendation id:  {groupsetRecommendation.id}</h3>
-                Belonging to userlocation: {groupsetRecommendation.userlocationId}
+        <div className="recomm">
+
+            <p id="display-of-recommendation">
+                <h3>Recommendation:  {groupsetRecommendation.id}</h3>
             </p>
-            <p className="informative">
-                Below you can find our groupset recommendation considering the characteristics of the area you specified:
+            <p id="display-of-userlocation-id">
+                Belonging to userlocation {groupsetRecommendation.userlocationId}
             </p>
             <br/>
 
+
+            <p className="informative">
+                Below you can find our groupset recommendation considering the characteristics of the area you specified:
+            </p>
+            <br/><br/>
+
             <div className="recommendation-div">
                 <div className="recommendation-attribute-div">
-                    <span className="attribute-label">Average elevation of your area in percent: </span>
+                    <span className="attribute-label">Avg. elevation of your area in %: </span>
                     <span className="attribute-value">{groupsetRecommendation.averageElevationInPercent.toFixed(2)}</span>
                 </div>
                 <div className="recommendation-attribute-div">
-                    <span className="attribute-label">Interpretation of the elevation value: </span>
+                    <span className="attribute-label">Interpretation of the elevation: </span>
                     <span className="attribute-value">{groupsetRecommendation.elevationInterpretation}</span>
                 </div>
 
@@ -44,7 +50,7 @@ export default function GroupsetRecommendationsComponent({ groupsetRecommendatio
                 </div>
             </div>
 
-        </>
+        </div>
     );
 }
 
