@@ -77,7 +77,7 @@ export default function UserlocationForm(props: UserlocationFormProps) {
                 <div className="label-input">
                     <label className="done"><strong>LAT. coordinate:</strong></label>
                     <input type="number"
-                           value={props.latitude}
+                           value={props.latitude.toFixed(4)}
                            maxLength={25}
                            onChange={changeLatitude}
                            required
@@ -86,7 +86,7 @@ export default function UserlocationForm(props: UserlocationFormProps) {
                 <div className="label-input">
                     <label className="done"><strong>LNG. coordinate:</strong></label>
                     <input type="number"
-                           value={props.longitude}
+                           value={props.longitude.toFixed(4)}
                            maxLength={25}
                            onChange={changeLongitude}
                            required

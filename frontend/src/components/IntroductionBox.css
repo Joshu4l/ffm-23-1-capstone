@@ -1,7 +1,11 @@
 .introductionBox {
     margin: 30px auto;
     padding: 5px;
-    width: 50vw;
+    max-width: 70vw;
     align-self: center;
+    text-align: justify;
+
     justify-content: center;
+    justify-self: center;
+
 }

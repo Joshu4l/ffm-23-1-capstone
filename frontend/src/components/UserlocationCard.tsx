@@ -1,7 +1,5 @@
 import {Userlocation} from "./Entities.ts";
 import "./UserlocationCard.css"
-
-import spreadMap from "../assets/spread-map.png"
 import {Link} from "react-router-dom";
 
 type UserlocationCardProps = {
@@ -15,13 +13,10 @@ export default function UserlocationCard (props: UserlocationCardProps) {
 
             <Link to={`/userlocations/${props.userlocation.id}`} className="userlocation-card">
 
-                <img id="spread-map" src={spreadMap} alt="location-img" />
-
                 <div className="userlocation-properties-div">
-                    <div className="userlocation-attribute-div">
-                        <span className="attribute-label">ID:</span>
-                        <span className="attribute-value">{props.userlocation.id}</span>
-                    </div>
+                    <div className="userlocation-id-div">
+                        <span>{props.userlocation.id}</span>
+                    </div><br/>
                     <div className="userlocation-attribute-div">
                         <span className="attribute-label">Designation :</span>
                         <span className="attribute-value">{props.userlocation.areaDesignation}</span>
@@ -43,7 +38,7 @@ export default function UserlocationCard (props: UserlocationCardProps) {
                         <span className="attribute-value">{props.userlocation.radiusInKm}</span>
                     </div>
                     <div className="userlocation-attribute-div">
-                        <span className="attribute-label">Average elevation in %:</span>
+                        <span className="attribute-label">Avg. elevation in %:</span>
                         <span className="attribute-value">{props.userlocation.averageElevationInPercent.toFixed(2)}</span>
                     </div>
                 </div>

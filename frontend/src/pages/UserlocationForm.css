@@ -2,16 +2,19 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 50px auto;
-    width: 46vw;
-    max-width: 50%; /* Begrenzt die maximale Breite auf 50% des Elterncontainers */
+    margin: 0 auto;
+    width: 78vw;
+    justify-items: center;
+}
+
+form {
+    width: 100%;
 }
 
 .label-input {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
+    margin: 0 auto;
     font-weight: bold;
 }
 
@@ -60,6 +63,7 @@ input {
 
     padding: 0.6em 1.2em;
     margin: 7px;
+    max-width: 50vw;
 
     cursor: pointer;
     transition: border-color 1s;

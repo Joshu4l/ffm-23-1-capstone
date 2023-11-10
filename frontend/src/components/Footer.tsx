@@ -1,9 +1,10 @@
 import landscapeBanner from '../assets/landscapeBanner.jpg';
+import "./Footer.css"
 
 export default function Footer () {
     return (
         <div className="footer-component">
-            <img src={landscapeBanner} alt="Footer Banner"/>
+            <img id="landscape-banner" src={landscapeBanner} alt="Footer Banner"/>
         </div>
     );
 }
