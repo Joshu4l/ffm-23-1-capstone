@@ -13,17 +13,14 @@
         flex-direction: row;
         align-self: center;
         align-items: center;
-
         margin-top: 7px;
         margin-bottom: 7px;
-        /*justify-content: center;*/
         justify-content: space-between;
-
-
         border-radius: 25px;
-        background-color: white;
+/*        background: linear-gradient(to bottom, #807424 25%, white 100%);*/
+        background: linear-gradient(#807424 25%, white 25%, white 100%);
         color: #213547;
-        width: 95vw; /*width of each card*/
+        width: 90vw;
     }
 
 }
@@ -52,6 +49,15 @@
     width: 86%;
 }
 
+.userlocation-id-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+}
+
+
+
 .userlocation-attribute-div {
     display: flex;
     align-items: center;
@@ -59,9 +65,11 @@
 }
 
 .attribute-label {
-    font-weight: bold;
+    font-weight: normal;
 }
 
 .attribute-value {
     align-self: end;
+    font-weight: normal;
+    color: darkgreen;
 }

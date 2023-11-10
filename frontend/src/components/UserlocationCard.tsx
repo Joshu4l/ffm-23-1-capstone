@@ -18,10 +18,9 @@ export default function UserlocationCard (props: UserlocationCardProps) {
                 {/*<img id="spread-map" src={spreadMap} alt="location-img" />*/}
 
                 <div className="userlocation-properties-div">
-                    <div className="userlocation-attribute-div">
-                        <span className="attribute-label">ID:</span>
-                        <span className="attribute-value">{props.userlocation.id}</span>
-                    </div>
+                    <div className="userlocation-id-div">
+                        <span>{props.userlocation.id}</span>
+                    </div><br/>
                     <div className="userlocation-attribute-div">
                         <span className="attribute-label">Designation :</span>
                         <span className="attribute-value">{props.userlocation.areaDesignation}</span>
