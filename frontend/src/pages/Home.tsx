@@ -29,20 +29,20 @@ export default function Home(props: HomeProps) {
                         <img id="location-pin" src={locationPin} alt="DE-Map" />
                     </div>
 
-                    <p><strong>Gotcha! &#x1F609;</strong></p>
+                    <p>Gotcha!</p>
                     <br/>
 
                     <form className="initial-form-container">
                         <div className="label-input">
                             <label><strong>LAT. coordinate:</strong></label>
-                            <input type="number" id="latitude" defaultValue={props.location.coordinates?.lat} />
+                            <input type="number" id="latitude" defaultValue={props.location.coordinates?.lat.toFixed(4)} />
                         </div>
                         <div className="label-input">
                             <label><strong>LNG. coordinate:</strong></label>
-                            <input type="number" id="longitude" defaultValue={props.location.coordinates?.lng} />
+                            <input type="number" id="longitude" defaultValue={props.location.coordinates?.lng.toFixed(4)} />
                         </div>
                     </form>
-                    <br/><br/>
+                    <br/>
 
                     <p id="explain-courses-of-action">
                         Satisfied with the auto-located coordinates?

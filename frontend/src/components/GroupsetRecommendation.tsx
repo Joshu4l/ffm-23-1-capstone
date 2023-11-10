@@ -1,7 +1,7 @@
 import {GroupsetRecommendation} from "./Entities.ts";
 import "./GroupsetRecommendation.css"
 
-export default function GroupsetRecommendationsComponent({ groupsetRecommendation }: { groupsetRecommendation: GroupsetRecommendation }) {
+export default function GroupsetRecommendationsComponent({ groupsetRecommendation } : { groupsetRecommendation: GroupsetRecommendation }) {
 
     return (
         <>
@@ -23,6 +23,9 @@ export default function GroupsetRecommendationsComponent({ groupsetRecommendatio
                     <span className="attribute-label">Interpretation of the elevation value: </span>
                     <span className="attribute-value">{groupsetRecommendation.elevationInterpretation}</span>
                 </div>
+
+                <hr></hr>
+
                 <div className="recommendation-attribute-div">
                     <span className="attribute-label">Recommended crankset dimensions:</span>
                     <span className="attribute-value">{groupsetRecommendation.cranksetDimensions[0]} {groupsetRecommendation.cranksetDimensions[1]}</span>
@@ -40,6 +43,7 @@ export default function GroupsetRecommendationsComponent({ groupsetRecommendatio
                     <span className="attribute-value"> {(groupsetRecommendation.cranksetDimensions[1] / groupsetRecommendation.largestSprocket).toFixed(2)}</span>
                 </div>
             </div>
+
         </>
     );
 }

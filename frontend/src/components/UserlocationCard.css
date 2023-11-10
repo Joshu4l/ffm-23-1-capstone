@@ -2,25 +2,30 @@
     display: flex;
     justify-content: space-around; /* Horizontal zentrieren */
     align-items: center; /* Vertikal zentrieren (optional) */
-    margin: 32px;
-
-}
-
-.userlocation-card {
-    display: flex;
-    flex-direction: row;
-    align-self: center;
-    align-items: center;
-    padding: 20px;
-
-    width: 40vw;
-    /*justify-content: center;*/
-    justify-content: space-evenly;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin: 0 auto;
 
 
-    border-radius: 25px;
-    background-color: white;
-    color: #213547;
+
+    .userlocation-card {
+        display: flex;
+        flex-direction: row;
+        align-self: center;
+        align-items: center;
+
+        margin-top: 7px;
+        margin-bottom: 7px;
+        /*justify-content: center;*/
+        justify-content: space-between;
+
+
+        border-radius: 25px;
+        background-color: white;
+        color: #213547;
+        width: 95vw; /*width of each card*/
+    }
+
 }
 
 .userlocation-card:hover {
@@ -29,7 +34,6 @@
     filter: drop-shadow(0 0 1em #757574);
     cursor: pointer;
 }
-
 
 #spread-map {
     height: 110px;
@@ -41,23 +45,23 @@
 }
 
 .userlocation-properties-div {
-    width: 70%
+
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 0 auto;
+    width: 86%;
 }
 
 .userlocation-attribute-div {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /*margin-left: 20px;*/
-
 }
 
 .attribute-label {
     font-weight: bold;
-    margin-left: 15px;
 }
 
 .attribute-value {
     align-self: end;
-    margin-right: 15px;
 }

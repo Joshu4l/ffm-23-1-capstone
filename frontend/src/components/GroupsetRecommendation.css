@@ -18,8 +18,21 @@
     background-color: #f6f6f6;
 
     margin: auto;
+    margin-bottom: 35px;
     padding: 10px;
     max-width: 50%;
+}
+
+hr{
+    border: 0;
+    height: 2px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 12px;
+    margin-right: 12px;
+    background-color: #4c4c4f;
+    justify-content: space-around;
+
 }
 
 .recommendation-attribute-div {
@@ -30,4 +43,13 @@
     display: flex;
     justify-content: space-between;
     align-self: center;
+}
+
+.attribute-label {
+    font-weight: normal;
+}
+
+.attribute-value {
+    color: darkgreen;
+    font-weight: bold;
 }

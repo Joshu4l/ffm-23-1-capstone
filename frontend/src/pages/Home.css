@@ -1,3 +1,5 @@
+
+
 #auto-locate-container {
     margin: 60px auto;
 }
@@ -20,8 +22,9 @@
 .initial-form-container {
     display: flex;
     flex-direction: column;
-    width: 31vw;
-    justify-content: center;
+    width: 75vw;
+    align-items: center;
+    justify-content: space-between;
     margin: 0 auto;
 }
 
@@ -50,19 +53,21 @@ input {
     text-align: right;
     cursor: pointer;
     transition: border-color 0.25s;
-    width: 50px;
+    width: 30px;
 }
 
 #explain-courses-of-action {
     text-align: justify;
     margin: 0 auto;
-    width: 31vw;
+    width: 70vw;
 }
 
 .standard-form-button {
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
+
+    max-width: 50vw;
 
     border: 1px solid transparent;
     border-radius: 10px;

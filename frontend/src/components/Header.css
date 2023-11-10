@@ -1,5 +1,6 @@
 .navbar {
     height: 110px;
+    width: 100vw;
     background: #236cea;
     display: flex;
     justify-content: space-between;
@@ -19,8 +20,8 @@
 
 .burger-menu-button {
     all: unset;
-    height: 36px;
-    width: 75px;
+    height: 32px;
+    width: 68px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -30,10 +31,10 @@
 #burger-menu-svg {
     height: 100%;
     width: 100%;
-    padding: 10px;
+    padding: 3px;
     cursor: pointer;
     transition: border-color 0.25s;
-    border: 1px solid;
+
     border-radius: 10%;
 }
 
@@ -46,7 +47,6 @@
 #sprocket-svg {
     height: 60px;
     width: 60px;
-    padding: 10px;
     vertical-align: middle;
     margin-right: 55px;
 }

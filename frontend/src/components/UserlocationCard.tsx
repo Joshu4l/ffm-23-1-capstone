@@ -15,7 +15,7 @@ export default function UserlocationCard (props: UserlocationCardProps) {
 
             <Link to={`/userlocations/${props.userlocation.id}`} className="userlocation-card">
 
-                <img id="spread-map" src={spreadMap} alt="location-img" />
+                {/*<img id="spread-map" src={spreadMap} alt="location-img" />*/}
 
                 <div className="userlocation-properties-div">
                     <div className="userlocation-attribute-div">
@@ -43,7 +43,7 @@ export default function UserlocationCard (props: UserlocationCardProps) {
                         <span className="attribute-value">{props.userlocation.radiusInKm}</span>
                     </div>
                     <div className="userlocation-attribute-div">
-                        <span className="attribute-label">Average elevation in %:</span>
+                        <span className="attribute-label">Avg. elevation in %:</span>
                         <span className="attribute-value">{props.userlocation.averageElevationInPercent.toFixed(2)}</span>
                     </div>
                 </div>

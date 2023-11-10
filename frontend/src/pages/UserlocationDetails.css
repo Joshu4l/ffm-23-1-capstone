@@ -2,7 +2,7 @@
     background: linear-gradient(#efe2cf, #d7c9ae);
     display: flex;
     flex-direction: column;
-    width: 35vw;
+    width: 70vw;
     justify-content: space-evenly;
     padding: 18px 40px;
     margin: 20px auto 15px;
@@ -136,17 +136,16 @@
 
 /* Style the number input fields */
 .label-input input[type="number"] {
-    width: calc(100% - 2em); /* Adjust the width to accommodate the stepper buttons */
-    padding-right: 7px; /* Add some padding on the right side */
-    text-align: right; /* Align the text to the right */
+    width: calc(100% - 2em);
+    padding-right: 7px;
+    text-align: right;
 }
 
-/* Show and style the stepper buttons */
 .label-input input[type="number"]::-webkit-inner-spin-button,
 .label-input input[type="number"]::-webkit-outer-spin-button {
     appearance: auto; /* Reset the appearance property to show the buttons */
-    opacity: 1; /* Make the buttons fully visible */
-    pointer-events: auto; /* Enable pointer events on the buttons */
+    opacity: 1;
+    pointer-events: auto;
 }
 
 
