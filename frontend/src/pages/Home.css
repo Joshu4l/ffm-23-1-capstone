@@ -4,9 +4,10 @@
     margin: 60px auto;
 }
 
-.image-div {
-    margin-bottom: 40px;
+.imageDiv {
+    position: relative;
 }
+
 
 #location-pin {
     margin: 5px;
